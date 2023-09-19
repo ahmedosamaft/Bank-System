@@ -82,7 +82,31 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/c++/bank sys project/bank_system/Helper.cpp">
+			<Option target="bank_system"/>
+		</Unit>
+		<Unit filename="C:/c++/bank sys project/bank_system/Helper.h">
+			<Option target="bank_system"/>
+		</Unit>
 		<Unit filename="C:/c++/bank sys project/bank_system/main.cpp">
+			<Option target="bank_system"/>
+		</Unit>
+		<Unit filename="C:/c++/bank sys project/bank_system/manger/ClientManger.cpp">
+			<Option target="bank_system"/>
+		</Unit>
+		<Unit filename="C:/c++/bank sys project/bank_system/manger/ClientManger.h">
+			<Option target="bank_system"/>
+		</Unit>
+		<Unit filename="C:/c++/bank sys project/bank_system/manger/EmployeeManager.cpp">
+			<Option target="bank_system"/>
+		</Unit>
+		<Unit filename="C:/c++/bank sys project/bank_system/manger/EmployeeManager.h">
+			<Option target="bank_system"/>
+		</Unit>
+		<Unit filename="C:/c++/bank sys project/bank_system/model/Admin.cpp">
+			<Option target="bank_system"/>
+		</Unit>
+		<Unit filename="C:/c++/bank sys project/bank_system/model/Admin.h">
 			<Option target="bank_system"/>
 		</Unit>
 		<Unit filename="C:/c++/bank sys project/bank_system/model/Client.cpp">

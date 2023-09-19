@@ -10,7 +10,8 @@
 #include <vector>
 class Helper {
 public:
-    static std::vector<std::string> parseLine(std::string entity,char delimiter);
+    static std::vector<std::string> parseLine(std::string entity, char delimiter);
+    static int getChoice(std::vector<std::string> &Menu);
 };
 
 

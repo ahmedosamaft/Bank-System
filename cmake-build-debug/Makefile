@@ -128,6 +128,30 @@ bank_system/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\bank_system.dir\build.make CMakeFiles/bank_system.dir/build
 .PHONY : bank_system/fast
 
+Helper.obj: Helper.cpp.obj
+.PHONY : Helper.obj
+
+# target to build an object file
+Helper.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bank_system.dir\build.make CMakeFiles/bank_system.dir/Helper.cpp.obj
+.PHONY : Helper.cpp.obj
+
+Helper.i: Helper.cpp.i
+.PHONY : Helper.i
+
+# target to preprocess a source file
+Helper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bank_system.dir\build.make CMakeFiles/bank_system.dir/Helper.cpp.i
+.PHONY : Helper.cpp.i
+
+Helper.s: Helper.cpp.s
+.PHONY : Helper.s
+
+# target to generate assembly for a file
+Helper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bank_system.dir\build.make CMakeFiles/bank_system.dir/Helper.cpp.s
+.PHONY : Helper.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -151,6 +175,78 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\bank_system.dir\build.make CMakeFiles/bank_system.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+manger/ClientManger.obj: manger/ClientManger.cpp.obj
+.PHONY : manger/ClientManger.obj
+
+# target to build an object file
+manger/ClientManger.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bank_system.dir\build.make CMakeFiles/bank_system.dir/manger/ClientManger.cpp.obj
+.PHONY : manger/ClientManger.cpp.obj
+
+manger/ClientManger.i: manger/ClientManger.cpp.i
+.PHONY : manger/ClientManger.i
+
+# target to preprocess a source file
+manger/ClientManger.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bank_system.dir\build.make CMakeFiles/bank_system.dir/manger/ClientManger.cpp.i
+.PHONY : manger/ClientManger.cpp.i
+
+manger/ClientManger.s: manger/ClientManger.cpp.s
+.PHONY : manger/ClientManger.s
+
+# target to generate assembly for a file
+manger/ClientManger.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bank_system.dir\build.make CMakeFiles/bank_system.dir/manger/ClientManger.cpp.s
+.PHONY : manger/ClientManger.cpp.s
+
+manger/EmployeeManager.obj: manger/EmployeeManager.cpp.obj
+.PHONY : manger/EmployeeManager.obj
+
+# target to build an object file
+manger/EmployeeManager.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bank_system.dir\build.make CMakeFiles/bank_system.dir/manger/EmployeeManager.cpp.obj
+.PHONY : manger/EmployeeManager.cpp.obj
+
+manger/EmployeeManager.i: manger/EmployeeManager.cpp.i
+.PHONY : manger/EmployeeManager.i
+
+# target to preprocess a source file
+manger/EmployeeManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bank_system.dir\build.make CMakeFiles/bank_system.dir/manger/EmployeeManager.cpp.i
+.PHONY : manger/EmployeeManager.cpp.i
+
+manger/EmployeeManager.s: manger/EmployeeManager.cpp.s
+.PHONY : manger/EmployeeManager.s
+
+# target to generate assembly for a file
+manger/EmployeeManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bank_system.dir\build.make CMakeFiles/bank_system.dir/manger/EmployeeManager.cpp.s
+.PHONY : manger/EmployeeManager.cpp.s
+
+model/Admin.obj: model/Admin.cpp.obj
+.PHONY : model/Admin.obj
+
+# target to build an object file
+model/Admin.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bank_system.dir\build.make CMakeFiles/bank_system.dir/model/Admin.cpp.obj
+.PHONY : model/Admin.cpp.obj
+
+model/Admin.i: model/Admin.cpp.i
+.PHONY : model/Admin.i
+
+# target to preprocess a source file
+model/Admin.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bank_system.dir\build.make CMakeFiles/bank_system.dir/model/Admin.cpp.i
+.PHONY : model/Admin.cpp.i
+
+model/Admin.s: model/Admin.cpp.s
+.PHONY : model/Admin.s
+
+# target to generate assembly for a file
+model/Admin.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bank_system.dir\build.make CMakeFiles/bank_system.dir/model/Admin.cpp.s
+.PHONY : model/Admin.cpp.s
 
 model/Client.obj: model/Client.cpp.obj
 .PHONY : model/Client.obj
@@ -233,9 +329,21 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... bank_system
+	@echo ... Helper.obj
+	@echo ... Helper.i
+	@echo ... Helper.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... manger/ClientManger.obj
+	@echo ... manger/ClientManger.i
+	@echo ... manger/ClientManger.s
+	@echo ... manger/EmployeeManager.obj
+	@echo ... manger/EmployeeManager.i
+	@echo ... manger/EmployeeManager.s
+	@echo ... model/Admin.obj
+	@echo ... model/Admin.i
+	@echo ... model/Admin.s
 	@echo ... model/Client.obj
 	@echo ... model/Client.i
 	@echo ... model/Client.s
