@@ -4,6 +4,7 @@
 #define BANK_SYSTEM_PERSON_H
 
 #include "../Helper.h"
+#include <memory>
 #include <string>
 
 namespace Model {

@@ -6,12 +6,14 @@
 #define BANK_SYSTEM_CLIENT_H
 
 #include "Person.h"
+#include "Transaction.h"
+#include <memory>
 
 namespace Model {
     class Client : public Person {
     private:
         double balance{};
-        
+        static std::vector<std::shared_ptr<Model::Transaction>> transactionHistory;
     public:
         using Person::Person;
         explicit Client(const std::string &line);

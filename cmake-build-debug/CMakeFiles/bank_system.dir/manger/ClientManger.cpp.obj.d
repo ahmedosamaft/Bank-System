@@ -105,15 +105,18 @@ CMakeFiles/bank_system.dir/manger/ClientManger.cpp.obj: \
  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_vector.h \
  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_bvector.h \
  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/vector.tcc \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/fstream \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/istream \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ios \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/exception \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/exception_ptr.h \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/cxxabi_init_exception.h \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/memory \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_tempbuf.h \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_raw_storage_iter.h \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/align.h \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdint.h \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/x86_64-w64-mingw32/include/stdint.h \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/unique_ptr.h \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/shared_ptr.h \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/shared_ptr_base.h \
  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/typeinfo \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/nested_exception.h \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ios_base.h \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/allocated_ptr.h \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/aligned_buffer.h \
  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/atomicity.h \
  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/gthr.h \
  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/gthr-default.h \
@@ -131,6 +134,22 @@ CMakeFiles/bank_system.dir/manger/ClientManger.cpp.obj: \
  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/x86_64-w64-mingw32/include/pthread_compat.h \
  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/x86_64-w64-mingw32/include/pthread_unistd.h \
  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/atomic_word.h \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/concurrence.h \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/exception \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/exception_ptr.h \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/cxxabi_init_exception.h \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/nested_exception.h \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/shared_ptr_atomic.h \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/atomic_base.h \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/atomic_lockfree_defines.h \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward/auto_ptr.h \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/glue_memory_defs.h \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/execution_defs.h \
+ D:/Projects/bank_system/model/Transaction.h \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/fstream \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/istream \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ios \
+ C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ios_base.h \
  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_classes.h \
  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_classes.tcc \
  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/system_error \
@@ -157,28 +176,10 @@ CMakeFiles/bank_system.dir/manger/ClientManger.cpp.obj: \
  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/iostream \
  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/map \
  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_tree.h \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/aligned_buffer.h \
  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/node_handle.h \
  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_map.h \
  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_multimap.h \
  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/erase_if.h \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/memory \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_tempbuf.h \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_raw_storage_iter.h \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/align.h \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdint.h \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/x86_64-w64-mingw32/include/stdint.h \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/unique_ptr.h \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/shared_ptr.h \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/shared_ptr_base.h \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/allocated_ptr.h \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/concurrence.h \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/shared_ptr_atomic.h \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/atomic_base.h \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/atomic_lockfree_defines.h \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward/auto_ptr.h \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/glue_memory_defs.h \
- C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/execution_defs.h \
  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/chrono \
  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/chrono.h \
  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ratio \

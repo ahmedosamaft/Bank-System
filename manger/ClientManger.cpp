@@ -7,9 +7,11 @@
 
 namespace Manger {
     string ClientManger::clientsDirectory = "../database/client.txt";
+    string ClientManger::transactionHistoryDirectory = "../database/transactionHistory.txt";
     vector<shared_ptr<Model::Client>> ClientManger::allClients = vector<shared_ptr<Model::Client>>();
     shared_ptr<Model::Client> ClientManger::currentClient = std::make_shared<Model::Client>();
     map<long long, shared_ptr<Model::Client>> ClientManger::idClient = map<long long, shared_ptr<Model::Client>>();
+    map<string, shared_ptr<Model::Client>> ClientManger::allClientsUserName = map<string, shared_ptr<Model::Client>>();
 
 
     void ClientManger::readClients() {
@@ -18,6 +20,15 @@ namespace Manger {
         ifstream fin(clientsDirectory);
         std::string line;
         while (getline(fin, line)) {
+            shared_ptr<Model::Client> client{new Model::Client(line)};
+            allClients.push_back(client);
+            idClient[client->getId()] = client;
+            allClientsUserName[client->getUserName()] = client;
+        }
+        fin.close();
+        ifstream sin(transactionHistoryDirectory);
+        line = "";
+        while (getline(sin, line)) {
             shared_ptr<Model::Client> client{new Model::Client(line)};
             allClients.push_back(client);
             idClient[client->getId()] = client;

@@ -4,6 +4,8 @@
 
 #include "Client.h"
 namespace Model {
+    std::vector<std::shared_ptr<Model::Transaction>> Client::transactionHistory = std::vector<std::shared_ptr<Model::Transaction>>();
+
     Client::Client(const std::string &line) {
         std::vector<std::string> entity = Helper::parseLine(line, ',');
         this->setId(std::stoll(entity[0]));

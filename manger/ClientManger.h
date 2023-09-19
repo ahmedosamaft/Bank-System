@@ -9,7 +9,6 @@
 #include <fstream>
 #include <iostream>
 #include <map>
-#include <memory>
 #include <vector>
 
 namespace Manger {
@@ -18,9 +17,10 @@ namespace Manger {
 
     public:
         static vector<shared_ptr<Model::Client>> allClients;
-        static string clientsDirectory;
+        static string clientsDirectory, transactionHistoryDirectory;
         static shared_ptr<Model::Client> currentClient;
         static map<long long, shared_ptr<Model::Client>> idClient;
+        static map<string, shared_ptr<Model::Client>> allClientsUserName;
 
 
         static void readClients();
