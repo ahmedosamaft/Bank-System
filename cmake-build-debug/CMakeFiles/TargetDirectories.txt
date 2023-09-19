@@ -1,3 +1,3 @@
-C:/c++/bank sys project/bank_system/cmake-build-debug/CMakeFiles/bank_system.dir
-C:/c++/bank sys project/bank_system/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/c++/bank sys project/bank_system/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+D:/Projects/bank_system/cmake-build-debug/CMakeFiles/bank_system.dir
+D:/Projects/bank_system/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Projects/bank_system/cmake-build-debug/CMakeFiles/rebuild_cache.dir

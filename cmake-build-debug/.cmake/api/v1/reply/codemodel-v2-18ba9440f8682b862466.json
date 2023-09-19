@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/c++/bank sys project/bank_system/cmake-build-debug",
-		"source" : "C:/c++/bank sys project/bank_system"
+		"build" : "D:/Projects/bank_system/cmake-build-debug",
+		"source" : "D:/Projects/bank_system"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 4
+		"minor" : 5
 	}
 }

@@ -22,6 +22,8 @@ namespace Model {
         virtual std::string ToString();
         bool operator==(const Person &rhs) const;
         bool operator==(const long long &id) const;
+        bool operator==(const std::string &userName) const;
+
 
     public:
         long long int getId() const;
