@@ -67,6 +67,30 @@ build CMakeFiles/bank_system.dir/model/Client.cpp.obj: CXX_COMPILER__bank_system
   OBJECT_DIR = CMakeFiles\bank_system.dir
   OBJECT_FILE_DIR = CMakeFiles\bank_system.dir\model
 
+build CMakeFiles/bank_system.dir/model/Employee.cpp.obj: CXX_COMPILER__bank_system_Debug D$:/bank_system/model/Employee.cpp || cmake_object_order_depends_target_bank_system
+  DEP_FILE = CMakeFiles\bank_system.dir\model\Employee.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\bank_system.dir
+  OBJECT_FILE_DIR = CMakeFiles\bank_system.dir\model
+
+build CMakeFiles/bank_system.dir/model/Admin.cpp.obj: CXX_COMPILER__bank_system_Debug D$:/bank_system/model/Admin.cpp || cmake_object_order_depends_target_bank_system
+  DEP_FILE = CMakeFiles\bank_system.dir\model\Admin.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\bank_system.dir
+  OBJECT_FILE_DIR = CMakeFiles\bank_system.dir\model
+
+build CMakeFiles/bank_system.dir/manger/ClientManger.cpp.obj: CXX_COMPILER__bank_system_Debug D$:/bank_system/manger/ClientManger.cpp || cmake_object_order_depends_target_bank_system
+  DEP_FILE = CMakeFiles\bank_system.dir\manger\ClientManger.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\bank_system.dir
+  OBJECT_FILE_DIR = CMakeFiles\bank_system.dir\manger
+
+build CMakeFiles/bank_system.dir/Helper.cpp.obj: CXX_COMPILER__bank_system_Debug D$:/bank_system/Helper.cpp || cmake_object_order_depends_target_bank_system
+  DEP_FILE = CMakeFiles\bank_system.dir\Helper.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\bank_system.dir
+  OBJECT_FILE_DIR = CMakeFiles\bank_system.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target bank_system
@@ -75,7 +99,7 @@ build CMakeFiles/bank_system.dir/model/Client.cpp.obj: CXX_COMPILER__bank_system
 #############################################
 # Link the executable bank_system.exe
 
-build bank_system.exe: CXX_EXECUTABLE_LINKER__bank_system_Debug CMakeFiles/bank_system.dir/main.cpp.obj CMakeFiles/bank_system.dir/model/Person.cpp.obj CMakeFiles/bank_system.dir/model/Client.cpp.obj
+build bank_system.exe: CXX_EXECUTABLE_LINKER__bank_system_Debug CMakeFiles/bank_system.dir/main.cpp.obj CMakeFiles/bank_system.dir/model/Person.cpp.obj CMakeFiles/bank_system.dir/model/Client.cpp.obj CMakeFiles/bank_system.dir/model/Employee.cpp.obj CMakeFiles/bank_system.dir/model/Admin.cpp.obj CMakeFiles/bank_system.dir/manger/ClientManger.cpp.obj CMakeFiles/bank_system.dir/Helper.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\bank_system.dir
