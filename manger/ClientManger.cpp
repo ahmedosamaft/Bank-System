@@ -64,7 +64,7 @@ namespace Manger {
         } else if (choice == 3) {
             deposit(userId);
         } else if (choice == 4) {
-            transferTo();
+            transferTo(userId);
         } else if (choice == 5) {
             showTransactionHistory(userId);
         } else
@@ -88,6 +88,7 @@ namespace Manger {
             } else {
                 double newBalance = currentBalance - amountOFMoney;
                 currentClient->setBalance(newBalance);
+                reloadData();
                 break;
             }
         }
@@ -105,6 +106,7 @@ namespace Manger {
             } else {
                 double newBalance = currentBalance + amountOFMoney;
                 currentClient->setBalance(newBalance);
+                reloadData();
                 break;
             }
         }
@@ -114,14 +116,14 @@ namespace Manger {
     void ClientManger::showTransactionHistory(long long &userId) {
     }
 
-    void ClientManger::transferTo() {
+    void ClientManger::transferTo(const long long int &userId) {
         cout << "Enter client username to transfer money to: ";
         string receiverUserName;
         shared_ptr<Model::Client> receiverClient = getClient(receiverUserName);
         while (true) {
             cin >> receiverUserName;
             receiverClient = getClient(receiverUserName);
-            if (receiverClient == nullptr) {
+            if (receiverClient == nullptr || receiverClient->getId() == userId) {
                 cout << "input a valid username: ";
                 cin.clear();
                 cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -146,8 +148,16 @@ namespace Manger {
                 double newBalance = currentBalance - amountOfMoney, receiverNewBalance = receiverClient->getBalance() + amountOfMoney;
                 currentClient->setBalance(newBalance);
                 receiverClient->setBalance(receiverNewBalance);
+                reloadData();
                 break;
             }
+        }
+    }
+
+    void ClientManger::reloadData() {
+        fstream sout(clientsDirectory, ios::out);
+        for (const auto &i: allClients) {
+            sout << i->toString() << '\n';
         }
     }
 

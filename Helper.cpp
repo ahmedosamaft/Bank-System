@@ -37,3 +37,11 @@ int Helper::runMenu(std::vector<std::string> &menu) {
     }
     return choice;
 }
+std::string Helper::makeEntity(std::vector<std::string> &data, char delimiter) {
+    std::string ret;
+    for (const auto &datum: data) {
+        ret += datum + delimiter;
+    }
+    ret.pop_back();
+    return ret;
+}

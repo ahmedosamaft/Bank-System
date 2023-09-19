@@ -15,6 +15,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/bank_system.dir/model/Employee.cpp.obj.d"
   "CMakeFiles/bank_system.dir/model/Person.cpp.obj"
   "CMakeFiles/bank_system.dir/model/Person.cpp.obj.d"
+  "CMakeFiles/bank_system.dir/model/Transaction.cpp.obj"
+  "CMakeFiles/bank_system.dir/model/Transaction.cpp.obj.d"
   "bank_system.exe"
   "bank_system.exe.manifest"
   "bank_system.pdb"

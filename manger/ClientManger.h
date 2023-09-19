@@ -6,12 +6,11 @@
 #define INC_8ACBB991E22240ACAF39A01A825CDC0E
 
 #include "../model/Client.h"
+#include <fstream>
+#include <iostream>
 #include <map>
 #include <memory>
 #include <vector>
-#include <fstream>
-#include <iostream>
-#include <memory>
 
 namespace Manger {
     using namespace std;
@@ -23,6 +22,7 @@ namespace Manger {
         static shared_ptr<Model::Client> currentClient;
         static map<long long, shared_ptr<Model::Client>> idClient;
 
+
         static void readClients();
         static bool isValidClient(string &userName, string &password);
         static void getClient(string &userName, string &password);
@@ -31,8 +31,8 @@ namespace Manger {
         static void withdraw(long long &userId);
         static void deposit(long long &userId);
         static void showTransactionHistory(long long &userId);
-        static void transferTo();
-        static void applyChanges();
+        static void transferTo(const long long int &userId);
+        static void reloadData();
         // Todo: display() :void;
     };
 

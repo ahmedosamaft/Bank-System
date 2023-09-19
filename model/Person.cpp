@@ -25,9 +25,10 @@ namespace Model {
     }
     /// read Entity from DB
     // TODO: return Entity as string
-    std::string Person::ToString() {
+    const std::string Person::toString() {
         return std::string();
     }
+
     bool Person::operator==(const Person &rhs) const {
         return id == rhs.id;
     }

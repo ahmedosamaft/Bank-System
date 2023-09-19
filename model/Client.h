@@ -15,6 +15,7 @@ namespace Model {
     public:
         using Person::Person;
         explicit Client(const std::string &line);
+        const std::string toString() override;
         double getBalance() const;
         void setBalance(double balance);
     };
