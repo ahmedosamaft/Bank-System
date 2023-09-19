@@ -19,6 +19,14 @@ namespace Manger {
         static map<long long,shared_ptr<Model::Client>> id_client;
 
         static void readClients();
+        // Todo: Valid Client (user, password) : bool
+        // Todo: Get Client (user, password) : void
+        // Todo: TakeControl(user, password) : void
+        // Todo: Withdraw();
+        // Todo: Deposit();
+        // Todo: transferTo(Client) :void;
+        // Todo: showBalance() :void;
+        // Todo: display() :void;
     };
 
 }// namespace Manger
