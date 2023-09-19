@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/bank_system.dir/main.cpp.obj.d"
   "CMakeFiles/bank_system.dir/manger/ClientManger.cpp.obj"
   "CMakeFiles/bank_system.dir/manger/ClientManger.cpp.obj.d"
+  "CMakeFiles/bank_system.dir/manger/EmployeeManager.cpp.obj"
+  "CMakeFiles/bank_system.dir/manger/EmployeeManager.cpp.obj.d"
   "CMakeFiles/bank_system.dir/model/Admin.cpp.obj"
   "CMakeFiles/bank_system.dir/model/Admin.cpp.obj.d"
   "CMakeFiles/bank_system.dir/model/Client.cpp.obj"
