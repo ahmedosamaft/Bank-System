@@ -1,6 +1,4 @@
-//
-// Created by andro on 9/19/2023.
-//
+// Copyright (c) 2023. Ahmed Osama
 
 #ifndef BANK_SYSTEM_PERSON_H
 #define BANK_SYSTEM_PERSON_H
@@ -18,7 +16,7 @@ namespace Model {
 
 
     public:
-        Person(long long int id, const std::string &firstName, const std::string &lastName, const std::string &userName, const std::string &password);
+        Person(long long int id, const std::string firstName, const std::string lastName, const std::string userName, const std::string password);
         Person(std::string &line);
         std::string ToSting();
         bool operator==(const Person &rhs) const;

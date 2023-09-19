@@ -9,12 +9,9 @@
 
 namespace Model {
     class Client : public Person {
-        long long id;
-        std::string first_name;
-        std::string last_name;
-        std::string userName;
-        std::string password;
-
+    private:
+        double balance;
+        
     public:
         using Person::Person;
     };

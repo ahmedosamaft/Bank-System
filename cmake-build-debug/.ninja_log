@@ -1,0 +1,5 @@
+# ninja log v5
+8	354	7168383577693494	CMakeFiles/bank_system.dir/main.cpp.obj	62d208b6a8382b21
+5	356	7168383577693494	CMakeFiles/bank_system.dir/model/Person.cpp.obj	8e6fab86c4d25dd3
+2	196	7168383751838662	CMakeFiles/bank_system.dir/model/Client.cpp.obj	27502c284ec837d
+196	394	7168383753787068	bank_system.exe	3f7c106dbccbede5
