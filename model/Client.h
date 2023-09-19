@@ -2,7 +2,22 @@
 // Created by Mohamed Abdelhady on 9/19/2023.
 //
 
-#ifndef INC_BD47D0616A3F4DEEA03F69D8EEFF0BC2
-#define INC_BD47D0616A3F4DEEA03F69D8EEFF0BC2
+#ifndef BANK_SYSTEM_CLIENT_H
+#define BANK_SYSTEM_CLIENT_H
 
-#endif//INC_BD47D0616A3F4DEEA03F69D8EEFF0BC2
+#include "Person.h"
+
+namespace Model {
+    class Client : public Person {
+        long long id;
+        std::string first_name;
+        std::string last_name;
+        std::string userName;
+        std::string password;
+
+    public:
+        using Person::Person;
+    };
+}// namespace Model
+
+#endif//BANK_SYSTEM_CLIENT_H
