@@ -9,29 +9,41 @@
 
 
 #include "../model/Employee.h"
-#include <vector>
 #include <map>
 #include <memory>
+#include <vector>
+#include <fstream>
+#include <iostream>
+#include <memory>
+#include <string>
 namespace Manger {
     using namespace std;
     class EmployeeManger {
     public:
-        static vector<shared_ptr<Model::Employee>> all_clients;
-        static string Employee_dir;
-        static shared_ptr<Model::Employee> current_client;
-        static map<long long,shared_ptr<Model::Employee>> id_client;
+        static vector<shared_ptr<Model::Employee>> allEmployees;
+        static vector<shared_ptr<Model::Employee>> allAdmins;
+        static string EmployeeDirectory;
+        static shared_ptr<Model::Employee> current_Employee;
+        static map<long long, shared_ptr<Model::Employee>> id_Employee;
         static void readEmployees();
-
+        static bool validEmployee(string &userName, string &password);
+        static void getEmployee(string &userName, string &password);
+        static shared_ptr<Model::Employee> getEmployee(string &userName);
+        static void takeControl(string &userName, string &password);
+        static void makeClient(string &userName, string &password, double balance);
+        static void deleteClient(long long id);
+        static void showSalary(long long id);
+        static void showList();
     };
-}
+}// namespace Manger
 
-// Todo: Valid Employee (user, password) : bool
-// Todo: Get Employee (user, password) : void
-// Todo: TakeControl(user, password) : void
-// Todo: makeClient();
-// Todo: deleteClient();
-// Todo: showSalary() :void;
-// Todo: showList() :void;
+// Todo: Valid Employee (user, password) : bool #done
+// Todo: Get Employee (user, password) : void #done
+// Todo: TakeControl(user, password) : void #done
+// Todo: makeClient(); #done
+// Todo: deleteClient(); #done
+// Todo: showSalary() :void; #done
+// Todo: showList() :void; #done
 
 
 #endif//INC_5FDA1EAC732F499A94DC5EF107D62D97
