@@ -11,7 +11,7 @@
 class Helper {
 public:
     static std::vector<std::string> parseLine(std::string entity, char delimiter);
-    static int getChoice(std::vector<std::string> &Menu);
+    static int runMenu(std::vector<std::string> &Menu);
 };
 
 
