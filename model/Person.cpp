@@ -41,5 +41,10 @@ namespace Model {
     void Person::setName(const std::string &name) {
         Person::name = name;
     }
+
     Person::Person(long long int id, const std::string &name, const std::string &userName, const std::string &password) : id(id), name(name), userName(userName), password(password) {}
+
+    bool Person::operator==(const std::string &userName) const {
+        return (this->userName == userName);
+    }
 }// namespace Model
