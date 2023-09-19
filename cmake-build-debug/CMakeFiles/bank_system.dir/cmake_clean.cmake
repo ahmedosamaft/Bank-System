@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/bank_system.dir/main.cpp.obj.d"
   "CMakeFiles/bank_system.dir/model/Client.cpp.obj"
   "CMakeFiles/bank_system.dir/model/Client.cpp.obj.d"
+  "CMakeFiles/bank_system.dir/model/Employee.cpp.obj"
+  "CMakeFiles/bank_system.dir/model/Employee.cpp.obj.d"
   "CMakeFiles/bank_system.dir/model/Person.cpp.obj"
   "CMakeFiles/bank_system.dir/model/Person.cpp.obj.d"
   "bank_system.exe"
