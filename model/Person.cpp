@@ -11,18 +11,6 @@ namespace Model {
     void Person::setId(long long int id) {
         Person::id = id;
     }
-    const std::string &Person::getFirstName() const {
-        return first_name;
-    }
-    void Person::setFirstName(const std::string &firstName) {
-        first_name = firstName;
-    }
-    const std::string &Person::getLastName() const {
-        return last_name;
-    }
-    void Person::setLastName(const std::string &lastName) {
-        last_name = lastName;
-    }
     const std::string &Person::getUserName() const {
         return userName;
     }
@@ -35,12 +23,9 @@ namespace Model {
     void Person::setPassword(const std::string &password) {
         Person::password = password;
     }
-    Person::Person(long long int id, const std::string firstName, const std::string lastName, const std::string userName, const std::string password) : id(id), first_name(firstName), last_name(lastName), userName(userName), password(password) {}
     /// read Entity from DB
-    Person::Person(std::string &line) {
-    }
     // TODO: return Entity as string
-    std::string Person::ToSting() {
+    std::string Person::ToString() {
         return std::string();
     }
     bool Person::operator==(const Person &rhs) const {
@@ -49,4 +34,12 @@ namespace Model {
     bool Person::operator==(const long long &id) const {
         return (this->id == id);
     }
+    Person::Person() {}
+    const std::string &Person::getName() const {
+        return name;
+    }
+    void Person::setName(const std::string &name) {
+        Person::name = name;
+    }
+    Person::Person(long long int id, const std::string &name, const std::string &userName, const std::string &password) : id(id), name(name), userName(userName), password(password) {}
 }// namespace Model

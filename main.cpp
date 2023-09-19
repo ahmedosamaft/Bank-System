@@ -1,7 +1,8 @@
-#include <iostream>
+#include "manger/ClientManger.h"
 #include "model/Client.h"
-int main() {
-  Model::Client ahmed(1,"A","S","A","X");
+#include <iostream>
 
-  std::cout << ahmed.getPassword();
+
+int main() {
+
 }

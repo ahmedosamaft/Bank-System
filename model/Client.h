@@ -10,10 +10,13 @@
 namespace Model {
     class Client : public Person {
     private:
-        double balance;
+        double balance{};
         
     public:
         using Person::Person;
+        explicit Client(const std::string &line);
+        double getBalance() const;
+        void setBalance(double balance);
     };
 }// namespace Model
 
