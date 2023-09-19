@@ -43,13 +43,12 @@ namespace Manger {
     }
 
     shared_ptr<Model::Client> ClientManger::getClient(string &userName) {
-        shared_ptr<Model::Client> client = nullptr;
         for (const auto &i: allClients) {
             if (*i == userName) {
                 return i;
             }
         }
-        return client;
+        return nullptr;
     }
 
 
@@ -76,37 +75,39 @@ namespace Manger {
     void ClientManger::withdraw(long long &userId) {
         cout << "How much amount you want to withdraw: ";
         double amountOFMoney, currentBalance = currentClient->getBalance();
-    againWithdraw:
-        cin >> amountOFMoney;
-        if (cin.fail() || amountOFMoney < 0) {
-            cout << "input a valid Amount of Money to withdraw: ";
-            cin.clear();
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            goto againWithdraw;
+        while (true) {
+            cin >> amountOFMoney;
+            if (cin.fail() || amountOFMoney < 0) {
+                cout << "input a valid Amount of Money to withdraw: ";
+                cin.clear();
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            } else if (amountOFMoney > currentBalance) {
+                cout << "Sorry Your Balance is $" << currentBalance << "\nTry another amount: ";
+                cin.clear();
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            } else {
+                double newBalance = currentBalance - amountOFMoney;
+                currentClient->setBalance(newBalance);
+                break;
+            }
         }
-        if (amountOFMoney > currentBalance) {
-            cout << "Sorry Your Balance is $" << currentBalance << "\nTry another amount: ";
-            cin.clear();
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            goto againWithdraw;
-        }
-        double newBalance = currentBalance - amountOFMoney;
-        currentClient->setBalance(newBalance);
     }
 
     void ClientManger::deposit(long long &userId) {
         cout << "How much amount you want to deposit: ";
         double amountOFMoney, currentBalance = currentClient->getBalance();
-    againDeposit:
-        cin >> amountOFMoney;
-        if (cin.fail() || amountOFMoney < 0) {
-            cout << "input a valid Amount of Money to deposit: ";
-            cin.clear();
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            goto againDeposit;
+        while (true) {
+            cin >> amountOFMoney;
+            if (cin.fail() || amountOFMoney < 0) {
+                cout << "input a valid Amount of Money to deposit: ";
+                cin.clear();
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            } else {
+                double newBalance = currentBalance + amountOFMoney;
+                currentClient->setBalance(newBalance);
+                break;
+            }
         }
-        double newBalance = currentBalance + amountOFMoney;
-        currentClient->setBalance(newBalance);
     }
 
 
@@ -116,34 +117,38 @@ namespace Manger {
     void ClientManger::transferTo() {
         cout << "Enter client username to transfer money to: ";
         string receiverUserName;
-    here:
-        cin >> receiverUserName;
         shared_ptr<Model::Client> receiverClient = getClient(receiverUserName);
-        if (receiverClient == nullptr) {
-            cout << "input a valid username: ";
-            cin.clear();
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            goto here;
+        while (true) {
+            cin >> receiverUserName;
+            receiverClient = getClient(receiverUserName);
+            if (receiverClient == nullptr) {
+                cout << "input a valid username: ";
+                cin.clear();
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            } else {
+                cout << "How much amount you want to transfer: ";
+                double amountOFMoney, currentBalance = currentClient->getBalance();
+                break;
+            }
         }
-        cout << "How much amount you want to transfer: ";
-        double amountOFMoney, currentBalance = currentClient->getBalance();
-    againDeposit:
-        cin >> amountOFMoney;
-        if (cin.fail() || amountOFMoney < 0) {
-            cout << "input a valid Amount of Money: ";
-            cin.clear();
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            goto againDeposit;
+        double amountOfMoney, currentBalance = currentClient->getBalance();
+        while (true) {
+            cin >> amountOfMoney;
+            if (cin.fail() || amountOfMoney < 0) {
+                cout << "input a valid Amount of Money: ";
+                cin.clear();
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            } else if (amountOfMoney > currentBalance) {
+                cout << "Sorry Your Balance is $" << currentBalance << "\nTry another amount: ";
+                cin.clear();
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            } else {
+                double newBalance = currentBalance - amountOfMoney, receiverNewBalance = receiverClient->getBalance() + amountOfMoney;
+                currentClient->setBalance(newBalance);
+                receiverClient->setBalance(receiverNewBalance);
+                break;
+            }
         }
-        if (amountOFMoney > currentBalance) {
-            cout << "Sorry Your Balance is $" << currentBalance << "\nTry another amount: ";
-            cin.clear();
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            goto here;
-        }
-        double newBalance = currentBalance - amountOFMoney, receiverNewBalance = receiverClient->getBalance() + amountOFMoney;
-        currentClient->setBalance(newBalance);
-        receiverClient->setBalance(receiverNewBalance);
     }
 
 }// namespace Manger

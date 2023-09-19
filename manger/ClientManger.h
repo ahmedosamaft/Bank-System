@@ -32,6 +32,7 @@ namespace Manger {
         static void deposit(long long &userId);
         static void showTransactionHistory(long long &userId);
         static void transferTo();
+        static void applyChanges();
         // Todo: display() :void;
     };
 

@@ -4,6 +4,7 @@
 
 #include "Helper.h"
 #include <iostream>
+
 std::vector<std::string> Helper::parseLine(std::string entity, char delimiter) {
     std::vector<std::string> entity_vec;
     entity += delimiter;
@@ -27,11 +28,12 @@ int Helper::runMenu(std::vector<std::string> &menu) {
     }
     std::cout << "Choice: ";
     int choice;
-here:
-    std::cin >> choice;
-    if (std::cin.fail() || choice > menu.size() || choice < 0) {
-        std::cout << "ERROR please input a number in range 1 to " << menu.size() << ": ";
-        goto here;
+    while (true) {
+        std::cin >> choice;
+        if (std::cin.fail() || choice > menu.size() || choice < 0) {
+            std::cout << "ERROR please input a number in range 1 to " << menu.size() << ": ";
+        } else
+            break;
     }
     return choice;
 }
