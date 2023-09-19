@@ -19,13 +19,19 @@ std::vector<std::string> Helper::parseLine(std::string entity, char delimiter) {
     }
     return entity_vec;
 }
-static int runMenu(std::vector<std::string> &menu) {
+
+int Helper::runMenu(std::vector<std::string> &menu) {
     std::cout << "Please make a choice:\n";
     for (int i = 0; i < menu.size(); ++i) {
         std::cout << i + 1 << " - " << menu[i] << std::endl;
     }
     std::cout << "Choice: ";
-    int choose;
-    std::cin >> choose;
-    return choose;
+    int choice;
+here:
+    std::cin >> choice;
+    if (std::cin.fail() || choice > menu.size() || choice < 0) {
+        std::cout << "ERROR please input a number in range 1 to " << menu.size() << ": ";
+        goto here;
+    }
+    return choice;
 }

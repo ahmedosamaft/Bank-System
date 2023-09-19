@@ -9,10 +9,14 @@
 #include <map>
 #include <memory>
 #include <vector>
+#include <fstream>
+#include <iostream>
+#include <memory>
 
 namespace Manger {
     using namespace std;
     class ClientManger {
+
     public:
         static vector<shared_ptr<Model::Client>> allClients;
         static string clientsDirectory;
@@ -22,11 +26,12 @@ namespace Manger {
         static void readClients();
         static bool isValidClient(string &userName, string &password);
         static void getClient(string &userName, string &password);
+        static shared_ptr<Model::Client> getClient(string &userName);
         static void takeControl(string &userName, string &password);
-        // Todo: TakeControl(user, password) : void
-        // Todo: Withdraw();
-        // Todo: Deposit();
-        // Todo: transferTo(Client) :void;
+        static void withdraw(long long &userId);
+        static void deposit(long long &userId);
+        static void showTransactionHistory(long long &userId);
+        static void transferTo();
         // Todo: display() :void;
     };
 
