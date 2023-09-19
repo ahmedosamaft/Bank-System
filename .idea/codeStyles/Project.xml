@@ -1,0 +1,87 @@
+<component name="ProjectCodeStyleConfiguration">
+  <code_scheme name="Project" version="173">
+    <option name="DO_NOT_FORMAT">
+      <list>
+        <fileSet type="globPattern" pattern="++p.second" />
+        <fileSet type="globPattern" pattern="--p.second" />
+        <fileSet type="globPattern" pattern="_print(p.ff)" />
+        <fileSet type="globPattern" pattern="_print(p.ss)" />
+        <fileSet type="globPattern" pattern="cerr &lt;&lt; &quot; &quot;" />
+        <fileSet type="globPattern" pattern="cerr &lt;&lt; &quot; &quot;" />
+        <fileSet type="globPattern" pattern="cerr &lt;&lt; &quot; &quot;" />
+        <fileSet type="globPattern" pattern="cerr &lt;&lt; &quot; &quot;" />
+        <fileSet type="globPattern" pattern="cerr &lt;&lt; &quot;,&quot;" />
+        <fileSet type="globPattern" pattern="cerr &lt;&lt; &quot;}&quot;" />
+        <fileSet type="globPattern" pattern="for (T i : v) {_print(i)" />
+        <fileSet type="globPattern" pattern="for (T i : v) {_print(i)" />
+        <fileSet type="globPattern" pattern="for (T i : v) {_print(i)" />
+        <fileSet type="globPattern" pattern="for (auto i : v) {_print(i)" />
+        <fileSet type="globPattern" pattern="return  p" />
+        <fileSet type="globPattern" pattern="return  p" />
+        <fileSet type="globPattern" pattern="return  v" />
+        <fileSet type="globPattern" pattern="return  v" />
+        <fileSet type="globPattern" pattern="return is" />
+        <fileSet type="globPattern" pattern="return is" />
+        <fileSet type="globPattern" pattern="return os" />
+        <fileSet type="globPattern" pattern="return os" />
+        <fileSet type="globPattern" pattern="template &lt;class T, class V&gt; void _print(map &lt;T, V&gt; v)" />
+        <fileSet type="globPattern" pattern="template &lt;class T, class V&gt; void _print(map &lt;T, V&gt; v) {cerr &lt;&lt; &quot;[ &quot;" />
+        <fileSet type="globPattern" pattern="template &lt;class T, class V&gt; void _print(pair &lt;T, V&gt; p)" />
+        <fileSet type="globPattern" pattern="template &lt;class T, class V&gt; void _print(pair &lt;T, V&gt; p) {cerr &lt;&lt; &quot;{&quot;" />
+        <fileSet type="globPattern" pattern="template &lt;class T&gt; void _print(multiset &lt;T&gt; v)" />
+        <fileSet type="globPattern" pattern="template &lt;class T&gt; void _print(multiset &lt;T&gt; v) {cerr &lt;&lt; &quot;[ &quot;" />
+        <fileSet type="globPattern" pattern="template &lt;class T&gt; void _print(set &lt;T&gt; v)" />
+        <fileSet type="globPattern" pattern="template &lt;class T&gt; void _print(set &lt;T&gt; v) {cerr &lt;&lt; &quot;[ &quot;" />
+        <fileSet type="globPattern" pattern="template &lt;class T&gt; void _print(vector &lt;T&gt; v)" />
+        <fileSet type="globPattern" pattern="template &lt;class T&gt; void _print(vector &lt;T&gt; v) {cerr &lt;&lt; &quot;[ &quot;" />
+        <fileSet type="globPattern" pattern="template&lt;typename T, typename U&gt; istream&amp; operator&gt;&gt;(istream&amp; is, pair&lt;T, U&gt; &amp;p){is &gt;&gt; p.first &gt;&gt; p.second" />
+        <fileSet type="globPattern" pattern="template&lt;typename T, typename U&gt; ostream&amp; operator&lt;&lt;(ostream&amp; os, pair&lt;T, U&gt;  p){os &lt;&lt; p.first &lt;&lt; ' ' &lt;&lt; p.second" />
+        <fileSet type="globPattern" pattern="template&lt;typename T, typename U&gt; pair&lt;T,U&gt; operator+(pair&lt;T,U&gt; a, pair&lt;T,U&gt; b){return make_pair(a.first+b.first, a.second+b.second)" />
+        <fileSet type="globPattern" pattern="template&lt;typename T, typename U&gt; pair&lt;T,U&gt; operator-(pair&lt;T,U&gt; a, pair&lt;T,U&gt; b){return make_pair(a.first-b.first, a.second-b.second)" />
+        <fileSet type="globPattern" pattern="template&lt;typename T, typename U&gt; pair&lt;T,U&gt;&amp; operator++           (pair&lt;T, U&gt; &amp;p){++p.first" />
+        <fileSet type="globPattern" pattern="template&lt;typename T, typename U&gt; pair&lt;T,U&gt;&amp; operator--           (pair&lt;T, U&gt; &amp;p){--p.first" />
+        <fileSet type="globPattern" pattern="template&lt;typename T&gt;             istream&amp; operator&gt;&gt;(istream&amp; is,  vector&lt;T&gt; &amp;v){for (auto&amp; i : v) is &gt;&gt; i" />
+        <fileSet type="globPattern" pattern="template&lt;typename T&gt;             ostream&amp; operator&lt;&lt;(ostream&amp; os,  vector&lt;T&gt;  v){for (auto&amp; i : v) os &lt;&lt; i &lt;&lt; ' '" />
+        <fileSet type="globPattern" pattern="template&lt;typename T&gt;             vector&lt;T&gt;&amp; operator++            (vector&lt;T&gt; &amp;v){for (auto&amp; i : v) ++i" />
+        <fileSet type="globPattern" pattern="template&lt;typename T&gt;             vector&lt;T&gt;&amp; operator--            (vector&lt;T&gt; &amp;v){for (auto&amp; i : v) --i" />
+        <fileSet type="globPattern" pattern="void _print(char t) {cerr &lt;&lt; t" />
+        <fileSet type="globPattern" pattern="void _print(double t) {cerr &lt;&lt; t" />
+        <fileSet type="globPattern" pattern="void _print(int t) {cerr &lt;&lt; t" />
+        <fileSet type="globPattern" pattern="void _print(ll t) {cerr &lt;&lt; t" />
+        <fileSet type="globPattern" pattern="void _print(string t) {cerr &lt;&lt; t" />
+        <fileSet type="globPattern" pattern="void _print(ull t) {cerr &lt;&lt; t" />
+        <fileSet type="globPattern" pattern="}" />
+        <fileSet type="globPattern" pattern="}" />
+        <fileSet type="globPattern" pattern="}" />
+        <fileSet type="globPattern" pattern="}" />
+        <fileSet type="globPattern" pattern="}" />
+        <fileSet type="globPattern" pattern="}" />
+        <fileSet type="globPattern" pattern="}" />
+        <fileSet type="globPattern" pattern="}" />
+        <fileSet type="globPattern" pattern="}" />
+        <fileSet type="globPattern" pattern="}" />
+        <fileSet type="globPattern" pattern="}" />
+        <fileSet type="globPattern" pattern="}" />
+        <fileSet type="globPattern" pattern="}" />
+        <fileSet type="globPattern" pattern="}" />
+        <fileSet type="globPattern" pattern="}" />
+        <fileSet type="globPattern" pattern="}" />
+        <fileSet type="globPattern" pattern="}" />
+        <fileSet type="globPattern" pattern="}" />
+        <fileSet type="globPattern" pattern="}" />
+        <fileSet type="globPattern" pattern="}" />
+        <fileSet type="globPattern" pattern="}" />
+        <fileSet type="globPattern" pattern="} cerr &lt;&lt; &quot;]&quot;" />
+        <fileSet type="globPattern" pattern="} cerr &lt;&lt; &quot;]&quot;" />
+        <fileSet type="globPattern" pattern="} cerr &lt;&lt; &quot;]&quot;" />
+        <fileSet type="globPattern" pattern="} cerr &lt;&lt; &quot;]&quot;" />
+      </list>
+    </option>
+    <Objective-C>
+      <option name="HEADER_GUARD_STYLE_PATTERN" value="" />
+    </Objective-C>
+    <clangFormatSettings>
+      <option name="ENABLED" value="true" />
+    </clangFormatSettings>
+  </code_scheme>
+</component>
