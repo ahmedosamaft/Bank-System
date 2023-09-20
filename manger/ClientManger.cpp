@@ -26,12 +26,15 @@ namespace Manger {
             allClientsUserName[client->getUserName()] = client;
         }
         fin.close();
+///       Reading Transaction History
         ifstream sin(transactionHistoryDirectory);
         line = "";
         while (getline(sin, line)) {
-            shared_ptr<Model::Client> client{new Model::Client(line)};
-            allClients.push_back(client);
-            idClient[client->getId()] = client;
+            shared_ptr<Model::Transaction> transaction{new Model::Transaction(line)};
+            transaction->getSender()->setTransactionHistory(transaction);
+///            if there is a receiver
+            if (transaction->getTransactionType() == "3")
+                transaction->getReceiver()->setTransactionHistory(transaction);
         }
     }
 

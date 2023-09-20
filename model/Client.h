@@ -13,13 +13,15 @@ namespace Model {
     class Client : public Person {
     private:
         double balance{};
-        static std::vector<std::shared_ptr<Model::Transaction>> transactionHistory;
+        std::vector<std::shared_ptr<Model::Transaction>> transactionHistory;
     public:
         using Person::Person;
         explicit Client(const std::string &line);
         const std::string toString() override;
         double getBalance() const;
         void setBalance(double balance);
+        const std::vector<std::shared_ptr<Model::Transaction>> &getTransactionHistory();
+        void setTransactionHistory(std::shared_ptr<Model::Transaction> TransactionHistory);
     };
 }// namespace Model
 

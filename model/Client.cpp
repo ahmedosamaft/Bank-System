@@ -4,7 +4,6 @@
 
 #include "Client.h"
 namespace Model {
-    std::vector<std::shared_ptr<Model::Transaction>> Client::transactionHistory = std::vector<std::shared_ptr<Model::Transaction>>();
 
     Client::Client(const std::string &line) {
         std::vector<std::string> entity = Helper::parseLine(line, ',');
@@ -20,6 +19,13 @@ namespace Model {
     }
     void Client::setBalance(double balance) {
         Client::balance = balance;
+    }
+
+    const std::vector<std::shared_ptr<Model::Transaction>> &Client::getTransactionHistory() {
+        return transactionHistory;
+    }
+    void Client::setTransactionHistory(std::shared_ptr<Model::Transaction> TransactionHistory) {
+        transactionHistory.push_back(TransactionHistory);
     }
 
     const std::string Client::toString() {

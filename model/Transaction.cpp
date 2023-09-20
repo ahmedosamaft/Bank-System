@@ -10,8 +10,8 @@
 namespace Model {
     Transaction::Transaction(const std::string &line) {
         std::vector<std::string> data = Helper::parseLine(line, ',');
-        this->setSender(Manger::ClientManger::allClientsUserName[data[0]]);
-        this->setReceiver(Manger::ClientManger::allClientsUserName[data[1]]);
+        this->setSender(Manger::ClientManger::idClient[stoll(data[0])]);
+        this->setReceiver(Manger::ClientManger::idClient[stoll(data[1])]);
         this->setTransactionType(data[2]);
         this->setAmount(stod(data[3]));
         this->setDate(data[4]);

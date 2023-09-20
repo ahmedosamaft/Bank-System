@@ -24,14 +24,19 @@ namespace Model {
 
     public:
         explicit Transaction(const std::string &line);
+
         const std::shared_ptr<Client> &getSender() const;
         void setSender(const std::shared_ptr<Client> &sender);
+
         const std::shared_ptr<Client> &getReceiver() const;
         void setReceiver(const std::shared_ptr<Client> &receiver);
+
         const std::string &getTransactionType() const;
         void setTransactionType(const std::string &transactionType);
+
         const std::string &getDate() const;
         void setDate(const std::string &date);
+
         double getAmount() const;
         void setAmount(double amount);
     };
