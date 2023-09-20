@@ -45,3 +45,38 @@ std::string Helper::makeEntity(std::vector<std::string> &data, char delimiter) {
     ret.pop_back();
     return ret;
 }
+
+
+
+std::string Helper::currentTimeToString() {
+    std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
+    time_t currentTime = std::chrono::system_clock::to_time_t(now);
+    tm *localTime = localtime(&currentTime);
+
+    std::ostringstream oss;
+    oss << std::put_time(localTime, "%Y%m%d%H%M%S");
+    std::string s = oss.str();
+    return s;
+}
+
+std::string Helper::currentTimeToFormattedString() {
+    std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
+    time_t currentTime = std::chrono::system_clock::to_time_t(now);
+    tm *localTime = localtime(&currentTime);
+
+    std::ostringstream oss;
+    oss << std::put_time(localTime, "%Y/%m/%d %H:%M:%S");
+    std::string s = oss.str();
+    return s;
+}
+
+std::string Helper::TimeStingToFormattedString(const std::string &timeString) {
+    std::string year = timeString.substr(0, 4);
+    std::string month = timeString.substr(4, 2);
+    std::string day = timeString.substr(6, 2);
+    std::string hour = timeString.substr(8, 2);
+    std::string minute = timeString.substr(10, 2);
+    std::string second = timeString.substr(12, 2);
+
+    return year + '/' + month + '/' + day + ' ' + hour + ':' + minute + ':' + second;
+}

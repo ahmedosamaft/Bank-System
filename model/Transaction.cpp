@@ -63,7 +63,7 @@ namespace Model {
         Transaction::amount = Amount;
     }
     void Transaction::makeNewTransaction(const std::shared_ptr<Client> &Sender, const std::shared_ptr<Client> &Receiver, const std::string &TransactionType, const double &Amount) {
-        std::string currentTime = currentTimeToString(), line;
+        std::string currentTime = Helper::currentTimeToString(), line;
         std::vector<std::string> data;
         data.push_back(std::to_string(generateId()));
         data.push_back(std::to_string(Sender->getId()));
@@ -75,45 +75,13 @@ namespace Model {
         line = Helper::makeEntity(data, ',');
         std::shared_ptr<Model::Transaction> transaction{new Model::Transaction(line)};
         Sender->setTransactionHistory(transaction);
-        ///       if there is a receiver
+///       if there is a receiver
         if (transaction->getTransactionType() == "3")
             transaction->getReceiver()->setTransactionHistory(transaction);
         std::fstream sout(Manger::ClientManger::transactionHistoryDirectory, std::ios::app);
         sout << line << '\n';
     }
 
-    std::string Transaction::currentTimeToString() {
-        std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
-        time_t currentTime = std::chrono::system_clock::to_time_t(now);
-        tm *localTime = localtime(&currentTime);
-
-        std::ostringstream oss;
-        oss << std::put_time(localTime, "%Y%m%d%H%M%S");
-        std::string s = oss.str();
-        return s;
-    }
-
-    std::string Transaction::currentTimeToFormattedString() {
-        std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
-        time_t currentTime = std::chrono::system_clock::to_time_t(now);
-        tm *localTime = localtime(&currentTime);
-
-        std::ostringstream oss;
-        oss << std::put_time(localTime, "%Y/%m/%d %H:%M:%S");
-        std::string s = oss.str();
-        return s;
-    }
-
-    std::string Transaction::TimeStingToFormattedString(const std::string &timeString) {
-        std::string year = timeString.substr(0, 4);
-        std::string month = timeString.substr(4, 2);
-        std::string day = timeString.substr(6, 2);
-        std::string hour = timeString.substr(8, 2);
-        std::string minute = timeString.substr(10, 2);
-        std::string second = timeString.substr(12, 2);
-
-        return year + '/' + month + '/' + day + ' ' + hour + ':' + minute + ':' + second;
-    }
 
     long long Transaction::generateId() {
         return ++lastId;
