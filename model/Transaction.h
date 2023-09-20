@@ -8,7 +8,10 @@
 #define INC_47D9A51B96C94111B0F6FD714BAA33E5
 
 
+#include <chrono>
+#include <iomanip>
 #include <memory>
+#include <sstream>
 #include <string>
 
 namespace Manger {
@@ -20,10 +23,15 @@ namespace Model {
     class Transaction {
         std::shared_ptr<Client> sender, receiver;
         std::string transactionType, date;
+        long long transactionId;
         double amount;
 
     public:
+        inline static long long lastId;
         explicit Transaction(const std::string &line);
+
+        long long getTransactionId() const;
+        void setTransactionId(const long long &transactionId);
 
         const std::shared_ptr<Client> &getSender() const;
         void setSender(const std::shared_ptr<Client> &sender);
@@ -39,6 +47,13 @@ namespace Model {
 
         double getAmount() const;
         void setAmount(double amount);
+
+
+        static void makeNewTransaction(const std::shared_ptr<Client> &Sender, const std::shared_ptr<Client> &Receiver, const std::string &TransactionType, const double &Amount);
+        static std::string currentTimeToString();
+        static std::string currentTimeToFormattedString();
+        static std::string TimeStingToFormattedString(const std::string &timeString);
+        static long long generateId();
     };
 
 }// namespace Model

@@ -14,14 +14,17 @@ namespace Model {
     private:
         double balance{};
         std::vector<std::shared_ptr<Model::Transaction>> transactionHistory;
+
     public:
+        inline static long long lastId;
         using Person::Person;
         explicit Client(const std::string &line);
         const std::string toString() override;
         double getBalance() const;
         void setBalance(double balance);
         const std::vector<std::shared_ptr<Model::Transaction>> &getTransactionHistory();
-        void setTransactionHistory(std::shared_ptr<Model::Transaction> TransactionHistory);
+        void setTransactionHistory(const std::shared_ptr<Model::Transaction> &TransactionHistory);
+        static long long generateId();
     };
 }// namespace Model
 

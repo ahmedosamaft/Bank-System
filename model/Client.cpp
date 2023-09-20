@@ -7,6 +7,7 @@ namespace Model {
 
     Client::Client(const std::string &line) {
         std::vector<std::string> entity = Helper::parseLine(line, ',');
+        lastId = std::max(lastId, stoll(entity[0]));
         this->setId(std::stoll(entity[0]));
         this->setUserName(entity[1]);
         this->setPassword(entity[2]);
@@ -24,7 +25,7 @@ namespace Model {
     const std::vector<std::shared_ptr<Model::Transaction>> &Client::getTransactionHistory() {
         return transactionHistory;
     }
-    void Client::setTransactionHistory(std::shared_ptr<Model::Transaction> TransactionHistory) {
+    void Client::setTransactionHistory(const std::shared_ptr<Model::Transaction> &TransactionHistory) {
         transactionHistory.push_back(TransactionHistory);
     }
 
@@ -36,5 +37,8 @@ namespace Model {
         data.push_back(this->getName());
         data.push_back(std::to_string(this->getBalance()));
         return Helper::makeEntity(data, ',');
+    }
+    long long Client::generateId() {
+        return ++lastId;
     }
 }// namespace Model
