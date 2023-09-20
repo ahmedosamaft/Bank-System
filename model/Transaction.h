@@ -24,7 +24,6 @@ namespace Model {
         double amount, receiverPreviousBalance, senderPreviousBalance;
 
     public:
-    public:
         explicit Transaction(const std::string &line);
         Transaction();
 

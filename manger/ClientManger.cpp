@@ -11,6 +11,7 @@ namespace Manger {
     vector<shared_ptr<Model::Client>> ClientManger::allClients = vector<shared_ptr<Model::Client>>();
     shared_ptr<Model::Client> ClientManger::currentClient = std::make_shared<Model::Client>();
     map<long long, shared_ptr<Model::Client>> ClientManger::idClient = map<long long, shared_ptr<Model::Client>>();
+    map<long long, shared_ptr<Model::Transaction>> ClientManger::idTransaction = map<long long, shared_ptr<Model::Transaction>>();
     map<string, shared_ptr<Model::Client>> ClientManger::allClientsUserName = map<string, shared_ptr<Model::Client>>();
     long long ClientManger::lastIdClient = 0;
     long long ClientManger::lastIdTransaction = 0;
@@ -25,18 +26,21 @@ namespace Manger {
             allClients.push_back(client);
             idClient[client->getId()] = client;
             allClientsUserName[client->getUserName()] = client;
-            lastIdClient = max(lastIdClient,client->getId());
+            lastIdClient = max(lastIdClient, client->getId());
         }
         fin.close();
-        ///       Reading Transaction History
+    }
+
+    void ClientManger::readTransactions() {
+        idTransaction.clear();
         ifstream sin(transactionHistoryDirectory);
-        line = "";
+        std::string line;
         while (getline(sin, line) && !line.empty()) {
             shared_ptr<Model::Transaction> transaction{new Model::Transaction(line)};
             transaction->getSender()->setTransactionHistory(transaction);
-            ///            if there is a receiver
             if (transaction->getTransactionType() == "3")
                 transaction->getReceiver()->setTransactionHistory(transaction);
+            idTransaction[transaction->getId()] = transaction;
             lastIdTransaction = max(lastIdTransaction, transaction->getId());
         }
     }
@@ -179,28 +183,38 @@ namespace Manger {
     void ClientManger::showTransactionHistory() {
         std::vector<std::shared_ptr<Model::Transaction>> transactions = currentClient->getTransactionHistory();
         for (const auto &trans: transactions) {
-            if (trans->getTransactionType() == "1") {
-                cout << "Withdrawing $" << trans->getAmount() << " (Account Balance Changed from $" << trans->getSenderPreviousBalance() << " to $"
-                     << trans->getSenderPreviousBalance() - trans->getAmount() << ") on "
-                     << Helper::TimeStingToFormattedString(trans->getDate()) << '\n';
-            } else if (trans->getTransactionType() == "2") {
-                cout << "Depositing $" << trans->getAmount() << " (Account Balance Changed from $" << trans->getSenderPreviousBalance() << " to $"
-                     << trans->getSenderPreviousBalance() + trans->getAmount() << ") on "
-                     << Helper::TimeStingToFormattedString(trans->getDate()) << '\n';
-            } else if (trans->getTransactionType() == "3") {
-                if (trans->getSender()->getId() ==  currentClient->getId()) {
-                    cout << "Sending $" << trans->getAmount() << " to " << trans->getReceiver()->getUserName()
-                         << " (Account Balance Changed from $" << trans->getSenderPreviousBalance()
-                         << " to $" << trans->getSenderPreviousBalance() - trans->getAmount()
-                         << ") on " << Helper::TimeStingToFormattedString(trans->getDate()) << '\n';
-                } else if (trans->getReceiver()->getId() ==  currentClient->getId()) {
-                    cout << "Receiving $" << trans->getAmount() << " from " << trans->getSender()->getUserName()
-                         << " (Account Balance Changed from $" << trans->getReceiverPreviousBalance()
-                         << " to $" << trans->getReceiverPreviousBalance() + trans->getAmount()
-                         << ") on " << Helper::TimeStingToFormattedString(trans->getDate()) << '\n';
-                }
-            }
+            showTransaction(trans);
         }
+    }
+
+    void ClientManger::showTransaction(std::shared_ptr<Model::Transaction> transaction) {
+        if (transaction->getTransactionType() == "1") cout << "Withdrawing $";
+        else if (transaction->getTransactionType() == "2")
+            cout << "Depositing $";
+        else if (transaction->getTransactionType() == "3") {
+            if (transaction->getSender()->getId() == currentClient->getId())
+                cout << "Sending $";
+            else
+                cout << "Receiving $";
+        }
+        cout << transaction->getAmount();
+
+
+        if (transaction->getTransactionType() == "3") {
+            if (transaction->getSender()->getId() == currentClient->getId())
+                cout << " to " << transaction->getReceiver()->getUserName()
+                     << " (Account Balance Changed from $" << transaction->getSenderPreviousBalance()
+                     << " to $" << transaction->getSenderPreviousBalance() - transaction->getAmount();
+            else
+                cout << " from " << transaction->getSender()->getUserName()
+                     << " (Account Balance Changed from $" << transaction->getReceiverPreviousBalance()
+                     << " to $" << transaction->getReceiverPreviousBalance() + transaction->getAmount();
+        } else
+            cout << " (Account Balance Changed from $"
+                 << transaction->getSenderPreviousBalance() << " to $"
+                 << transaction->getSenderPreviousBalance() - transaction->getAmount();
+
+        cout << ") on " << Helper::TimeStingToFormattedString(transaction->getDate()) << '\n';
     }
 
     void ClientManger::reloadData() {
@@ -209,19 +223,26 @@ namespace Manger {
             sout << i->toString() << '\n';
         }
     }
-    void ClientManger::makeTransaction(shared_ptr<Model::Client> sender,shared_ptr<Model::Client> receiver,std::string transactionType,double amount) {
+
+    void ClientManger::makeTransaction(const shared_ptr<Model::Client> &sender, const shared_ptr<Model::Client> &receiver, const std::string &transactionType, double amount) {
         std::shared_ptr<Model::Transaction> transaction{new Model::Transaction()};
         transaction->setId(++lastIdTransaction);
         transaction->setSender(sender);
         transaction->setReceiver(receiver);
+        transaction->setReceiverPreviousBalance(receiver->getBalance());
+        transaction->setSenderPreviousBalance(sender->getBalance());
         transaction->setAmount(amount);
         transaction->setTransactionType(transactionType);
         transaction->setDate(Helper::currentTimeToString());
         sender->setTransactionHistory(transaction);
-        /// If there is a Receiver!
-        if (transaction->getTransactionType() == "3")
+        if (transaction->getTransactionType() == "3")// NOTE: 3 == transfer to
             transaction->getReceiver()->setTransactionHistory(transaction);
+        saveTransaction(transaction);
+    }
+
+    void ClientManger::saveTransaction(std::shared_ptr<Model::Transaction>& transaction) {
         std::fstream sout(Manger::ClientManger::transactionHistoryDirectory, std::ios::app);
+        idTransaction[transaction->getId()] = transaction;
         sout << transaction->toString() << '\n';
     }
 

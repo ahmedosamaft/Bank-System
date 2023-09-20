@@ -21,11 +21,13 @@ namespace Manger {
         static shared_ptr<Model::Client> currentClient;
         static map<long long, shared_ptr<Model::Client>> idClient;
         static map<string, shared_ptr<Model::Client>> allClientsUserName;
+        static map<long long, shared_ptr<Model::Transaction>> idTransaction;
         static long long lastIdClient;
         static long long lastIdTransaction;
 
 
         static void readClients();
+        static void readTransactions();
         static bool isValidClient(string &userName, string &password);
         static void getClient(string &userName, string &password);
         static shared_ptr<Model::Client> getClient(string &userName);
@@ -36,7 +38,9 @@ namespace Manger {
         static void showTransactionHistory();
         static void transferTo();
         static void reloadData();
-        static void makeTransaction(shared_ptr<Model::Client> sender, shared_ptr<Model::Client> receiver, string transactionType, double amount);
+        static void makeTransaction(const shared_ptr<Model::Client>& sender, const shared_ptr<Model::Client>& receiver, const string& transactionType, double amount);
+        static void saveTransaction(shared_ptr<Model::Transaction>& transaction);
+        static void showTransaction(shared_ptr<Model::Transaction> transaction);
     };
 
 }// namespace Manger

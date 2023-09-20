@@ -21,7 +21,6 @@ namespace Manger {
     class EmployeeManger {
     public:
         static vector<shared_ptr<Model::Employee>> allEmployees;
-        static vector<shared_ptr<Model::Employee>> allAdmins;
         static string EmployeeDirectory;
         static shared_ptr<Model::Employee> current_Employee;
         static map<long long, shared_ptr<Model::Employee>> id_Employee;
@@ -36,14 +35,6 @@ namespace Manger {
         static void showList();
     };
 }// namespace Manger
-
-// Todo: Valid Employee (user, password) : bool #done
-// Todo: Get Employee (user, password) : void #done
-// Todo: TakeControl(user, password) : void #done
-// Todo: makeClient(); #done
-// Todo: deleteClient(); #done
-// Todo: showSalary() :void; #done
-// Todo: showList() :void; #done
 
 
 #endif//INC_5FDA1EAC732F499A94DC5EF107D62D97
