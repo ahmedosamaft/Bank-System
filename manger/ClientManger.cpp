@@ -20,7 +20,7 @@ namespace Manger {
         ifstream fin(clientsDirectory);
         std::string line;
         Model::Client::lastId = 0;
-        while (getline(fin, line)) {
+        while (getline(fin, line) && !line.empty()) {
             shared_ptr<Model::Client> client{new Model::Client(line)};
             allClients.push_back(client);
             idClient[client->getId()] = client;
@@ -31,7 +31,7 @@ namespace Manger {
         ifstream sin(transactionHistoryDirectory);
         line = "";
         Model::Transaction::lastId = 0;
-        while (getline(sin, line)) {
+        while (getline(sin, line) && !line.empty()) {
             shared_ptr<Model::Transaction> transaction{new Model::Transaction(line)};
             transaction->getSender()->setTransactionHistory(transaction);
             ///            if there is a receiver
@@ -70,25 +70,31 @@ namespace Manger {
 
     void ClientManger::takeControl(string &userName, string &password) {
         getClient(userName, password);
-        long long userId = currentClient->getId();
-        std::cout << "\twelcome, " << currentClient->getName() << "\n\n";
+        std::cout << "\n\tWelcome " << currentClient->getName() << "\n\n";
         std::vector<std::string> menu = {"Account Information", "withdraw", "deposit", "Transfer Money To", "Transaction History", "Exit"};
         int choice = Helper::runMenu(menu);
         if (choice == 1) {
+            accountInformation();
         } else if (choice == 2) {
-            withdraw(userId);
+            withdraw();
         } else if (choice == 3) {
-            deposit(userId);
+            deposit();
         } else if (choice == 4) {
-            transferTo(userId);
+            transferTo();
         } else if (choice == 5) {
-            showTransactionHistory(userId);
+            showTransactionHistory();
         } else
             return;
     }
 
-    void ClientManger::withdraw(long long &userId) {
+    void ClientManger::accountInformation() {
+        std::cout << "\tWelcome " << currentClient->getName() << "\n\nusername: " << currentClient->getUserName();
+        std::cout << "\nAccount Balance: $" << currentClient->getBalance() << '\n';
+    }
+
+    void ClientManger::withdraw() {
         cout << "How much amount you want to withdraw: ";
+        long long userId = currentClient->getId();
         double amountOfMoney, currentBalance = currentClient->getBalance();
         while (true) {
             cin >> amountOfMoney;
@@ -102,17 +108,18 @@ namespace Manger {
                 cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             } else {
                 double newBalance = currentBalance - amountOfMoney;
+                Model::Transaction::makeNewTransaction(currentClient, currentClient, "1", amountOfMoney);
                 currentClient->setBalance(newBalance);
                 reloadData();
-                Model::Transaction::makeNewTransaction(currentClient, currentClient, "1", amountOfMoney);
                 cout << "\nSuccessful!\n";
                 break;
             }
         }
     }
 
-    void ClientManger::deposit(long long &userId) {
+    void ClientManger::deposit() {
         cout << "How much amount you want to deposit: ";
+        long long userId = currentClient->getId();
         double amountOfMoney, currentBalance = currentClient->getBalance();
         while (true) {
             cin >> amountOfMoney;
@@ -122,17 +129,18 @@ namespace Manger {
                 cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             } else {
                 double newBalance = currentBalance + amountOfMoney;
+                Model::Transaction::makeNewTransaction(currentClient, currentClient, "2", amountOfMoney);
                 currentClient->setBalance(newBalance);
                 reloadData();
-                Model::Transaction::makeNewTransaction(currentClient, currentClient, "2", amountOfMoney);
                 cout << "\nSuccessful!\n";
                 break;
             }
         }
     }
 
-    void ClientManger::transferTo(const long long int &userId) {
+    void ClientManger::transferTo() {
         cout << "Enter client username to transfer money to: ";
+        long long userId = currentClient->getId();
         string receiverUserName;
         shared_ptr<Model::Client> receiverClient;
         while (true) {
@@ -160,18 +168,42 @@ namespace Manger {
                 cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             } else {
                 double newBalance = currentBalance - amountOfMoney, receiverNewBalance = receiverClient->getBalance() + amountOfMoney;
+                Model::Transaction::makeNewTransaction(currentClient, receiverClient, "3", amountOfMoney);
                 currentClient->setBalance(newBalance);
                 receiverClient->setBalance(receiverNewBalance);
                 reloadData();
-                Model::Transaction::makeNewTransaction(currentClient, receiverClient, "3", amountOfMoney);
                 cout << "\nSuccessful!\n";
                 break;
             }
         }
     }
 
-
-    void ClientManger::showTransactionHistory(long long &userId) {
+    void ClientManger::showTransactionHistory() {
+        long long userId = currentClient->getId();
+        std::vector<std::shared_ptr<Model::Transaction>> transactions = currentClient->getTransactionHistory();
+        for (const auto &trans: transactions) {
+            if (trans->getTransactionType() == "1") {
+                cout << "Withdrawing $" << trans->getAmount() << " (Account Balance Changed from $" << trans->getSenderPreviousBalance() << " to $"
+                     << trans->getSenderPreviousBalance() - trans->getAmount() << ") on "
+                     << Helper::TimeStingToFormattedString(trans->getDate()) << '\n';
+            } else if (trans->getTransactionType() == "2") {
+                cout << "Depositing $" << trans->getAmount() << " (Account Balance Changed from $" << trans->getSenderPreviousBalance() << " to $"
+                     << trans->getSenderPreviousBalance() + trans->getAmount() << ") on "
+                     << Helper::TimeStingToFormattedString(trans->getDate()) << '\n';
+            } else if (trans->getTransactionType() == "3") {
+                if (trans->getSender()->getId() == userId) {
+                    cout << "Sending $" << trans->getAmount() << " to " << trans->getReceiver()->getUserName()
+                         << " (Account Balance Changed from $" << trans->getSenderPreviousBalance()
+                         << " to $" << trans->getSenderPreviousBalance() - trans->getAmount()
+                         << ") on " << Helper::TimeStingToFormattedString(trans->getDate()) << '\n';
+                } else if (trans->getReceiver()->getId() == userId) {
+                    cout << "Receiving $" << trans->getAmount() << " from " << trans->getSender()->getUserName()
+                         << " (Account Balance Changed from $" << trans->getReceiverPreviousBalance()
+                         << " to $" << trans->getReceiverPreviousBalance() + trans->getAmount()
+                         << ") on " << Helper::TimeStingToFormattedString(trans->getDate()) << '\n';
+                }
+            }
+        }
     }
 
     void ClientManger::reloadData() {

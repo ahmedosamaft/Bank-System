@@ -21,29 +21,36 @@ namespace Model {
         std::shared_ptr<Client> sender, receiver;
         std::string transactionType, date;
         long long transactionId;
-        double amount;
+        double amount, receiverPreviousBalance, senderPreviousBalance;
 
+    public:
     public:
         inline static long long lastId;
         explicit Transaction(const std::string &line);
 
         long long getTransactionId() const;
-        void setTransactionId(const long long &transactionId);
+        void setTransactionId(const long long &TransactionId);
 
         const std::shared_ptr<Client> &getSender() const;
-        void setSender(const std::shared_ptr<Client> &sender);
+        void setSender(const std::shared_ptr<Client> &Sender);
 
         const std::shared_ptr<Client> &getReceiver() const;
-        void setReceiver(const std::shared_ptr<Client> &receiver);
+        void setReceiver(const std::shared_ptr<Client> &Receiver);
 
         const std::string &getTransactionType() const;
-        void setTransactionType(const std::string &transactionType);
+        void setTransactionType(const std::string &TransactionType);
 
         const std::string &getDate() const;
-        void setDate(const std::string &date);
+        void setDate(const std::string &Date);
+
+        double getReceiverPreviousBalance() const;
+        void setReceiverPreviousBalance(double ReceiverPreviousBalance);
+
+        double getSenderPreviousBalance() const;
+        void setSenderPreviousBalance(double SenderPreviousBalance);
 
         double getAmount() const;
-        void setAmount(double amount);
+        void setAmount(double Amount);
 
 
         static void makeNewTransaction(const std::shared_ptr<Client> &Sender, const std::shared_ptr<Client> &Receiver, const std::string &TransactionType, const double &Amount);

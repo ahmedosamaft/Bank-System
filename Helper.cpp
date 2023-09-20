@@ -35,6 +35,7 @@ int Helper::runMenu(std::vector<std::string> &menu) {
         } else
             break;
     }
+    std::cout << '\n';
     return choice;
 }
 std::string Helper::makeEntity(std::vector<std::string> &data, char delimiter) {
@@ -45,7 +46,6 @@ std::string Helper::makeEntity(std::vector<std::string> &data, char delimiter) {
     ret.pop_back();
     return ret;
 }
-
 
 
 std::string Helper::currentTimeToString() {

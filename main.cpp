@@ -5,9 +5,8 @@
 
 
 int main() {
-    std::string s = "c001";
+    std::string s = "c002";
     Manger::ClientManger::readClients();
     Manger::ClientManger::takeControl(s, s);
-    std::cout << 1;
     return 0;
 }

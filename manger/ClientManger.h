@@ -28,10 +28,11 @@ namespace Manger {
         static void getClient(string &userName, string &password);
         static shared_ptr<Model::Client> getClient(string &userName);
         static void takeControl(string &userName, string &password);
-        static void withdraw(long long &userId);
-        static void deposit(long long &userId);
-        static void showTransactionHistory(long long &userId);
-        static void transferTo(const long long int &userId);
+        static void accountInformation();
+        static void withdraw();
+        static void deposit();
+        static void showTransactionHistory();
+        static void transferTo();
         static void reloadData();
         // Todo: display() :void;
     };
