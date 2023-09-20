@@ -320,6 +320,30 @@ model/Person.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\bank_system.dir\build.make CMakeFiles/bank_system.dir/model/Person.cpp.s
 .PHONY : model/Person.cpp.s
 
+model/Transaction.obj: model/Transaction.cpp.obj
+.PHONY : model/Transaction.obj
+
+# target to build an object file
+model/Transaction.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bank_system.dir\build.make CMakeFiles/bank_system.dir/model/Transaction.cpp.obj
+.PHONY : model/Transaction.cpp.obj
+
+model/Transaction.i: model/Transaction.cpp.i
+.PHONY : model/Transaction.i
+
+# target to preprocess a source file
+model/Transaction.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bank_system.dir\build.make CMakeFiles/bank_system.dir/model/Transaction.cpp.i
+.PHONY : model/Transaction.cpp.i
+
+model/Transaction.s: model/Transaction.cpp.s
+.PHONY : model/Transaction.s
+
+# target to generate assembly for a file
+model/Transaction.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bank_system.dir\build.make CMakeFiles/bank_system.dir/model/Transaction.cpp.s
+.PHONY : model/Transaction.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -353,6 +377,9 @@ help:
 	@echo ... model/Person.obj
 	@echo ... model/Person.i
 	@echo ... model/Person.s
+	@echo ... model/Transaction.obj
+	@echo ... model/Transaction.i
+	@echo ... model/Transaction.s
 .PHONY : help
 
 

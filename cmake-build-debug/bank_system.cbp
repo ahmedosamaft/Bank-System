@@ -127,6 +127,12 @@
 		<Unit filename="D:/Projects/bank_system/model/Person.h">
 			<Option target="bank_system"/>
 		</Unit>
+		<Unit filename="D:/Projects/bank_system/model/Transaction.cpp">
+			<Option target="bank_system"/>
+		</Unit>
+		<Unit filename="D:/Projects/bank_system/model/Transaction.h">
+			<Option target="bank_system"/>
+		</Unit>
 		<Unit filename="D:/Projects/bank_system/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

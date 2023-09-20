@@ -25,15 +25,20 @@ namespace Model {
     }
     /// read Entity from DB
     // TODO: return Entity as string
-    std::string Person::ToString() {
+    const std::string Person::toString() {
         return std::string();
     }
+
     bool Person::operator==(const Person &rhs) const {
         return id == rhs.id;
     }
     bool Person::operator==(const long long &id) const {
         return (this->id == id);
     }
+    bool Person::operator==(const std::string &userName) const {
+        return (this->userName == userName);
+    }
+
     Person::Person() {}
     const std::string &Person::getName() const {
         return name;
@@ -44,7 +49,4 @@ namespace Model {
 
     Person::Person(long long int id, const std::string &name, const std::string &userName, const std::string &password) : id(id), name(name), userName(userName), password(password) {}
 
-    bool Person::operator==(const std::string &userName) const {
-        return (this->userName == userName);
-    }
 }// namespace Model

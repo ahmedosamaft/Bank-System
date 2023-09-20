@@ -3,14 +3,14 @@
 #ifndef BANK_SYSTEM_PERSON_H
 #define BANK_SYSTEM_PERSON_H
 
-#include <string>
 #include "../Helper.h"
+#include <memory>
+#include <string>
 
 namespace Model {
 
     class Person {
-    private:
-        long long id;
+        long long id, lastId;
         std::string name;
         std::string userName;
         std::string password;
@@ -19,7 +19,7 @@ namespace Model {
     public:
         Person();
         Person(long long int id, const std::string &name, const std::string &userName, const std::string &password);
-        virtual std::string ToString();
+        virtual const std::string toString();
         bool operator==(const Person &rhs) const;
         bool operator==(const long long &id) const;
         bool operator==(const std::string &userName) const;
