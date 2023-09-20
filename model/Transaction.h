@@ -20,16 +20,16 @@ namespace Model {
     class Transaction {
         std::shared_ptr<Client> sender, receiver;
         std::string transactionType, date;
-        long long transactionId;
+        long long id;
         double amount, receiverPreviousBalance, senderPreviousBalance;
 
     public:
     public:
-        inline static long long lastId;
         explicit Transaction(const std::string &line);
+        Transaction();
 
-        long long getTransactionId() const;
-        void setTransactionId(const long long &TransactionId);
+        long long getId() const;
+        void setId(const long long &TransactionId);
 
         const std::shared_ptr<Client> &getSender() const;
         void setSender(const std::shared_ptr<Client> &Sender);
@@ -52,9 +52,7 @@ namespace Model {
         double getAmount() const;
         void setAmount(double Amount);
 
-
-        static void makeNewTransaction(const std::shared_ptr<Client> &Sender, const std::shared_ptr<Client> &Receiver, const std::string &TransactionType, const double &Amount);
-        static long long generateId();
+        std::string toString();
     };
 
 }// namespace Model

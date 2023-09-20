@@ -16,7 +16,6 @@ namespace Model {
         std::vector<std::shared_ptr<Model::Transaction>> transactionHistory;
 
     public:
-        inline static long long lastId;
         using Person::Person;
         explicit Client(const std::string &line);
         const std::string toString() override;

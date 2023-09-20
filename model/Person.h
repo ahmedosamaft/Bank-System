@@ -10,10 +10,11 @@
 namespace Model {
 
     class Person {
-        long long id, lastId;
+        long long id;
         std::string name;
         std::string userName;
         std::string password;
+        std::string createdAt;
 
 
     public:

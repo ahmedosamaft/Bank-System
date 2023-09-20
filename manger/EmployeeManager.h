@@ -9,6 +9,7 @@
 
 
 class EmployeeManager {
+
 };
 // Todo: Valid Employee (user, password) : bool
 // Todo: Get Employee (user, password) : void
