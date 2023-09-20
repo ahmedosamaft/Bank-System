@@ -11,9 +11,8 @@
 namespace Model {
     Transaction::Transaction(const std::string &line) {
         std::vector<std::string> data = Helper::parseLine(line, ',');
-        ///        @data{ transactionId, senderId, receiverId, transactionType, amount, senderPreviousBalance, receiverPreviousBalance transactionTime }
-        lastId = std::max(lastId, stoll(data[0]));
-        this->setTransactionId(stoll(data[0]));
+        ///        @data{ id, senderId, receiverId, transactionType, amount, senderPreviousBalance, receiverPreviousBalance transactionTime }
+        this->setId(stoll(data[0]));
         this->setSender(Manger::ClientManger::idClient[stoll(data[1])]);
         this->setReceiver(Manger::ClientManger::idClient[stoll(data[2])]);
         this->setTransactionType(data[3]);
@@ -23,11 +22,11 @@ namespace Model {
         this->setDate(data[7]);
     }
 
-    long long Transaction::getTransactionId() const {
-        return transactionId;
+    long long Transaction::getId() const {
+        return id;
     }
-    void Transaction::setTransactionId(const long long &TransactionId) {
-        Transaction::transactionId = TransactionId;
+    void Transaction::setId(const long long &TransactionId) {
+        Transaction::id = TransactionId;
     }
 
     const std::shared_ptr<Client> &Transaction::getSender() const {
@@ -77,31 +76,18 @@ namespace Model {
     void Transaction::setAmount(double Amount) {
         Transaction::amount = Amount;
     }
-    void Transaction::makeNewTransaction(const std::shared_ptr<Client> &Sender, const std::shared_ptr<Client> &Receiver, const std::string &TransactionType, const double &Amount) {
+    std::string Transaction::toString() {
         std::string currentTime = Helper::currentTimeToString(), line;
         std::vector<std::string> data;
-        data.push_back(std::to_string(generateId()));
-        data.push_back(std::to_string(Sender->getId()));
-        data.push_back(std::to_string(Receiver->getId()));
-        data.push_back(TransactionType);
-        data.push_back(std::to_string(Amount));
-        data.push_back(std::to_string(Sender->getBalance()));
-        data.push_back(std::to_string(Receiver->getBalance()));
+        data.push_back(std::to_string(id));
+        data.push_back(std::to_string(sender->getId()));
+        data.push_back(std::to_string(receiver->getId()));
+        data.push_back(transactionType);
+        data.push_back(std::to_string(amount));
+        data.push_back(std::to_string(sender->getBalance()));
+        data.push_back(std::to_string(receiver->getBalance()));
         data.push_back(currentTime);
-
-        line = Helper::makeEntity(data, ',');
-        std::shared_ptr<Model::Transaction> transaction{new Model::Transaction(line)};
-        Sender->setTransactionHistory(transaction);
-        ///       if there is a receiver
-        if (transaction->getTransactionType() == "3")
-            transaction->getReceiver()->setTransactionHistory(transaction);
-        std::fstream sout(Manger::ClientManger::transactionHistoryDirectory, std::ios::app);
-        sout << line << '\n';
+        return  Helper::makeEntity(data, ',');
     }
-
-
-    long long Transaction::generateId() {
-        return ++lastId;
-    }
-
+    Transaction::Transaction() {}
 }// namespace Model

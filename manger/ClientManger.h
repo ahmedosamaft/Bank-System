@@ -21,6 +21,8 @@ namespace Manger {
         static shared_ptr<Model::Client> currentClient;
         static map<long long, shared_ptr<Model::Client>> idClient;
         static map<string, shared_ptr<Model::Client>> allClientsUserName;
+        static long long lastIdClient;
+        static long long lastIdTransaction;
 
 
         static void readClients();
@@ -34,7 +36,7 @@ namespace Manger {
         static void showTransactionHistory();
         static void transferTo();
         static void reloadData();
-        // Todo: display() :void;
+        static void makeTransaction(shared_ptr<Model::Client> sender, shared_ptr<Model::Client> receiver, string transactionType, double amount);
     };
 
 }// namespace Manger
