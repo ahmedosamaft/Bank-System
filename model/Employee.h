@@ -12,11 +12,10 @@
 namespace Model {
     class Employee : public Person {
     private:
-        double balance{};
+        double salary{};
 
     public:
         using Person::Person;
-        static bool isAdmin;
         explicit Employee(const std::string &line);
         double getSalary() const;
         void setSalary(double balance);

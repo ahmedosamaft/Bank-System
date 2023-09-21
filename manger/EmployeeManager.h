@@ -9,6 +9,7 @@
 
 
 #include "../model/Employee.h"
+#include "../manger/ClientManger.h"
 #include <map>
 #include <memory>
 #include <vector>
@@ -22,17 +23,17 @@ namespace Manger {
     public:
         static vector<shared_ptr<Model::Employee>> allEmployees;
         static string EmployeeDirectory;
-        static shared_ptr<Model::Employee> current_Employee;
-        static map<long long, shared_ptr<Model::Employee>> id_Employee;
+        static shared_ptr<Model::Employee> currentEmployee;
+        static map<long long, shared_ptr<Model::Employee>> idEmployee;
         static void readEmployees();
         static bool validEmployee(string &userName, string &password);
         static void getEmployee(string &userName, string &password);
         static shared_ptr<Model::Employee> getEmployee(string &userName);
         static void takeControl(string &userName, string &password);
-        static void makeClient(string &userName, string &password, double balance);
-        static void deleteClient(long long id);
-        static void showSalary(long long id);
-        static void showList();
+        static void accountInformation();
+        static void controlClient();
+        static void makeClient();
+        static void deleteClient();
     };
 }// namespace Manger
 
