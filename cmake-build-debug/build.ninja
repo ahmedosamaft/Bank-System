@@ -73,17 +73,11 @@ build CMakeFiles/bank_system.dir/model/Employee.cpp.obj: CXX_COMPILER__bank_syst
   OBJECT_DIR = CMakeFiles\bank_system.dir
   OBJECT_FILE_DIR = CMakeFiles\bank_system.dir\model
 
-build CMakeFiles/bank_system.dir/model/Admin.cpp.obj: CXX_COMPILER__bank_system_Debug D$:/bank_system/model/Admin.cpp || cmake_object_order_depends_target_bank_system
-  DEP_FILE = CMakeFiles\bank_system.dir\model\Admin.cpp.obj.d
+build CMakeFiles/bank_system.dir/controller/ClientController.cpp.obj: CXX_COMPILER__bank_system_Debug D$:/bank_system/controller/ClientController.cpp || cmake_object_order_depends_target_bank_system
+  DEP_FILE = CMakeFiles\bank_system.dir\controller\ClientController.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\bank_system.dir
-  OBJECT_FILE_DIR = CMakeFiles\bank_system.dir\model
-
-build CMakeFiles/bank_system.dir/manger/ClientManger.cpp.obj: CXX_COMPILER__bank_system_Debug D$:/bank_system/manger/ClientManger.cpp || cmake_object_order_depends_target_bank_system
-  DEP_FILE = CMakeFiles\bank_system.dir\manger\ClientManger.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\bank_system.dir
-  OBJECT_FILE_DIR = CMakeFiles\bank_system.dir\manger
+  OBJECT_FILE_DIR = CMakeFiles\bank_system.dir\controller
 
 build CMakeFiles/bank_system.dir/Helper.cpp.obj: CXX_COMPILER__bank_system_Debug D$:/bank_system/Helper.cpp || cmake_object_order_depends_target_bank_system
   DEP_FILE = CMakeFiles\bank_system.dir\Helper.cpp.obj.d
@@ -91,11 +85,11 @@ build CMakeFiles/bank_system.dir/Helper.cpp.obj: CXX_COMPILER__bank_system_Debug
   OBJECT_DIR = CMakeFiles\bank_system.dir
   OBJECT_FILE_DIR = CMakeFiles\bank_system.dir
 
-build CMakeFiles/bank_system.dir/manger/EmployeeManager.cpp.obj: CXX_COMPILER__bank_system_Debug D$:/bank_system/manger/EmployeeManager.cpp || cmake_object_order_depends_target_bank_system
-  DEP_FILE = CMakeFiles\bank_system.dir\manger\EmployeeManager.cpp.obj.d
+build CMakeFiles/bank_system.dir/controller/EmployeeController.cpp.obj: CXX_COMPILER__bank_system_Debug D$:/bank_system/controller/EmployeeController.cpp || cmake_object_order_depends_target_bank_system
+  DEP_FILE = CMakeFiles\bank_system.dir\controller\EmployeeController.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\bank_system.dir
-  OBJECT_FILE_DIR = CMakeFiles\bank_system.dir\manger
+  OBJECT_FILE_DIR = CMakeFiles\bank_system.dir\controller
 
 build CMakeFiles/bank_system.dir/model/Transaction.cpp.obj: CXX_COMPILER__bank_system_Debug D$:/bank_system/model/Transaction.cpp || cmake_object_order_depends_target_bank_system
   DEP_FILE = CMakeFiles\bank_system.dir\model\Transaction.cpp.obj.d
@@ -103,11 +97,17 @@ build CMakeFiles/bank_system.dir/model/Transaction.cpp.obj: CXX_COMPILER__bank_s
   OBJECT_DIR = CMakeFiles\bank_system.dir
   OBJECT_FILE_DIR = CMakeFiles\bank_system.dir\model
 
-build CMakeFiles/bank_system.dir/manger/AdminManger.cpp.obj: CXX_COMPILER__bank_system_Debug D$:/bank_system/manger/AdminManger.cpp || cmake_object_order_depends_target_bank_system
-  DEP_FILE = CMakeFiles\bank_system.dir\manger\AdminManger.cpp.obj.d
+build CMakeFiles/bank_system.dir/controller/AdminController.cpp.obj: CXX_COMPILER__bank_system_Debug D$:/bank_system/controller/AdminController.cpp || cmake_object_order_depends_target_bank_system
+  DEP_FILE = CMakeFiles\bank_system.dir\controller\AdminController.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\bank_system.dir
-  OBJECT_FILE_DIR = CMakeFiles\bank_system.dir\manger
+  OBJECT_FILE_DIR = CMakeFiles\bank_system.dir\controller
+
+build CMakeFiles/bank_system.dir/view/View.cpp.obj: CXX_COMPILER__bank_system_Debug D$:/bank_system/view/View.cpp || cmake_object_order_depends_target_bank_system
+  DEP_FILE = CMakeFiles\bank_system.dir\view\View.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\bank_system.dir
+  OBJECT_FILE_DIR = CMakeFiles\bank_system.dir\view
 
 
 # =============================================================================
@@ -117,7 +117,7 @@ build CMakeFiles/bank_system.dir/manger/AdminManger.cpp.obj: CXX_COMPILER__bank_
 #############################################
 # Link the executable bank_system.exe
 
-build bank_system.exe: CXX_EXECUTABLE_LINKER__bank_system_Debug CMakeFiles/bank_system.dir/main.cpp.obj CMakeFiles/bank_system.dir/model/Person.cpp.obj CMakeFiles/bank_system.dir/model/Client.cpp.obj CMakeFiles/bank_system.dir/model/Employee.cpp.obj CMakeFiles/bank_system.dir/model/Admin.cpp.obj CMakeFiles/bank_system.dir/manger/ClientManger.cpp.obj CMakeFiles/bank_system.dir/Helper.cpp.obj CMakeFiles/bank_system.dir/manger/EmployeeManager.cpp.obj CMakeFiles/bank_system.dir/model/Transaction.cpp.obj CMakeFiles/bank_system.dir/manger/AdminManger.cpp.obj
+build bank_system.exe: CXX_EXECUTABLE_LINKER__bank_system_Debug CMakeFiles/bank_system.dir/main.cpp.obj CMakeFiles/bank_system.dir/model/Person.cpp.obj CMakeFiles/bank_system.dir/model/Client.cpp.obj CMakeFiles/bank_system.dir/model/Employee.cpp.obj CMakeFiles/bank_system.dir/controller/ClientController.cpp.obj CMakeFiles/bank_system.dir/Helper.cpp.obj CMakeFiles/bank_system.dir/controller/EmployeeController.cpp.obj CMakeFiles/bank_system.dir/model/Transaction.cpp.obj CMakeFiles/bank_system.dir/controller/AdminController.cpp.obj CMakeFiles/bank_system.dir/view/View.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\bank_system.dir

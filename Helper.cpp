@@ -35,7 +35,6 @@ int Helper::runMenu(std::vector<std::string> &menu) {
         } else
             break;
     }
-    std::cout << '\n';
     return choice;
 }
 std::string Helper::makeEntity(std::vector<std::string> &data, char delimiter) {
@@ -79,4 +78,13 @@ std::string Helper::TimeStingToFormattedString(const std::string &timeString) {
     std::string second = timeString.substr(12, 2);
 
     return year + '/' + month + '/' + day + ' ' + hour + ':' + minute + ':' + second;
+}
+template<class T>
+void Helper::eraseEntity(std::vector<std::shared_ptr<T>> &entities, std::shared_ptr<T> &entityToDelete) {
+    std::vector<T> ret;
+    for (const auto &entity: entities) {
+        if(entity != entityToDelete)
+            ret.push_back(entity);
+    }
+    entities = ret;
 }

@@ -23,8 +23,7 @@ namespace Model {
     void Person::setPassword(const std::string &password) {
         Person::password = password;
     }
-    /// read Entity from DB
-    // TODO: return Entity as string
+
     const std::string Person::toString() {
         return std::string();
     }

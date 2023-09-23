@@ -11,9 +11,9 @@
 #include <memory>
 #include <string>
 
-namespace Manger {
-    class ClientManger;
-}// namespace Manger
+namespace Controller {
+    class ClientController;
+}// namespace Controller
 
 namespace Model {
     class Client;

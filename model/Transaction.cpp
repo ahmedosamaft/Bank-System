@@ -5,7 +5,7 @@
 //
 
 #include "Transaction.h"
-#include "../manger/ClientManger.h"
+#include "../controller/ClientController.h"
 
 
 namespace Model {
@@ -13,8 +13,8 @@ namespace Model {
         std::vector<std::string> data = Helper::parseLine(line, ',');
         ///        @data{ id, senderId, receiverId, transactionType, amount, senderPreviousBalance, receiverPreviousBalance transactionTime }
         this->setId(stoll(data[0]));
-        this->setSender(Manger::ClientManger::idClient[stoll(data[1])]);
-        this->setReceiver(Manger::ClientManger::idClient[stoll(data[2])]);
+        this->setSender(Controller::ClientController::idClient[stoll(data[1])]);
+        this->setReceiver(Controller::ClientController::idClient[stoll(data[2])]);
         this->setTransactionType(data[3]);
         this->setAmount(stod(data[4]));
         this->setSenderPreviousBalance(stod(data[5]));

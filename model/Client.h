@@ -21,9 +21,8 @@ namespace Model {
         const std::string toString() override;
         double getBalance() const;
         void setBalance(double balance);
-        const std::vector<std::shared_ptr<Model::Transaction>> &getTransactionHistory();
+        std::vector<std::shared_ptr<Model::Transaction>> &getTransactionHistory();
         void setTransactionHistory(const std::shared_ptr<Model::Transaction> &TransactionHistory);
-        static long long generateId();
     };
 }// namespace Model
 

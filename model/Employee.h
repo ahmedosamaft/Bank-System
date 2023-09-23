@@ -12,13 +12,19 @@
 namespace Model {
     class Employee : public Person {
     private:
-        double salary{};
+        double salary;
+        bool isAdmin_;
+
+
 
     public:
         using Person::Person;
+        const std::string toString() override;
         explicit Employee(const std::string &line);
         double getSalary() const;
         void setSalary(double balance);
+        bool isAdmin() const;
+        void setIsAdmin(bool isAdmin);
     };
 }// namespace Model
 

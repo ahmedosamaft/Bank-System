@@ -8,6 +8,7 @@
 
 #include <chrono>
 #include <iomanip>
+#include <memory>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -21,6 +22,8 @@ public:
     static std::string currentTimeToString();
     static std::string currentTimeToFormattedString();
     static std::string TimeStingToFormattedString(const std::string &timeString);
+    template<class T>
+    static void eraseEntity(std::vector<std::shared_ptr<T>> & entities,std::shared_ptr<T>& entityToDelete);
 };
 
 

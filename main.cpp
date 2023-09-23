@@ -1,14 +1,5 @@
-#include "manger/ClientManger.h"
-#include "model/Client.h"
-#include <iostream>
-#include <string>
-
+#include "view/View.h"
 
 int main() {
-    std::string s = "c002";
-    Manger::ClientManger::readClients();
-    Manger::ClientManger::readTransactions();
-    while (true)
-    Manger::ClientManger::takeControl(s, s);
-    return 0;
+    View::runMainMenu();
 }

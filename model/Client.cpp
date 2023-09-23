@@ -21,7 +21,7 @@ namespace Model {
         Client::balance = balance;
     }
 
-    const std::vector<std::shared_ptr<Model::Transaction>> &Client::getTransactionHistory() {
+    std::vector<std::shared_ptr<Model::Transaction>> &Client::getTransactionHistory() {
         return transactionHistory;
     }
     void Client::setTransactionHistory(const std::shared_ptr<Model::Transaction> &TransactionHistory) {
