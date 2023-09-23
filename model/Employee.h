@@ -15,8 +15,6 @@ namespace Model {
         double salary;
         bool isAdmin_;
 
-
-
     public:
         using Person::Person;
         const std::string toString() override;

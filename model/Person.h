@@ -10,6 +10,7 @@
 namespace Model {
 
     class Person {
+    private:
         long long id;
         std::string name;
         std::string userName;
