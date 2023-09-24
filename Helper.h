@@ -24,6 +24,7 @@ public:
     static std::string TimeStingToFormattedString(const std::string &timeString);
     template<class T>
     static void eraseEntity(std::vector<std::shared_ptr<T>> & entities,std::shared_ptr<T>& entityToDelete);
+    static bool isInteger(const std::string &s);
 };
 
 

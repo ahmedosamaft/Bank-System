@@ -79,8 +79,8 @@ namespace Controller {
 
     void ClientController::takeControl(string &userName) {
         currentClient = getClient(userName);
-        std::cout << "\t\tWelcome " << currentClient->getName() << "\n";
-        std::vector<std::string> menu = {"Account Information", "Withdraw", "Deposit", "Transfer Money To", "Transaction History", "Exit"};
+        std::cout << "  Welcome " << currentClient->getName() << "\n";
+        std::vector<std::string> menu = {"Account Information", "Withdraw", "Deposit", "Transfer Money To", "Transaction History", "Logout"};
         while (true){
             int choice = Helper::runMenu(menu);
             if (choice == 1) {
@@ -99,8 +99,9 @@ namespace Controller {
     }
 
     void ClientController::accountInformation() {
-        std::cout << "Name: " << currentClient->getName() << " - username: " << currentClient->getUserName();
-        std::cout << "\nAccount Balance: $" << currentClient->getBalance() << '\n';
+        std::cout << "Name: " << currentClient->getName() << "\n username: " << currentClient->getUserName();
+        std::cout << "\n Account Created at " << Helper::TimeStingToFormattedString(currentClient->getCreationDate());
+        std::cout << "\n Account Balance: $" << currentClient->getBalance() << "\n\n";
     }
 
     void ClientController::withdraw() {
@@ -121,7 +122,7 @@ namespace Controller {
                 makeTransaction(currentClient, currentClient, "1", amountOfMoney);
                 currentClient->setBalance(newBalance);
                 reloadData();
-                cout << "\nSuccessful!\n";
+                cout << "Successful!\n";
                 break;
             }
         }
@@ -141,7 +142,7 @@ namespace Controller {
                 makeTransaction(currentClient, currentClient, "2", amountOfMoney);
                 currentClient->setBalance(newBalance);
                 reloadData();
-                cout << "\nSuccessful!\n";
+                cout << "Successful!\n";
                 break;
             }
         }
@@ -180,7 +181,7 @@ namespace Controller {
                 currentClient->setBalance(newBalance);
                 receiverClient->setBalance(receiverNewBalance);
                 reloadData();
-                cout << "\nSuccessful!\n";
+                cout << "Successful!\n";
                 break;
             }
         }
@@ -193,7 +194,7 @@ namespace Controller {
         }
     }
 
-    void ClientController::showTransaction(std::shared_ptr<Model::Transaction> transaction) {
+    void ClientController::showTransaction(const std::shared_ptr<Model::Transaction>& transaction) {
         if (transaction->getTransactionType() == "1") cout << "Withdrawing $";
         else if (transaction->getTransactionType() == "2")
             cout << "Depositing $";

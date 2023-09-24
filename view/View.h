@@ -17,7 +17,7 @@
 class View {
 public:
     static void runMainMenu();
-    static void doLogin();
+    static void login();
 };
 
 

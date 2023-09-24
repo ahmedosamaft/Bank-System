@@ -15,6 +15,7 @@ namespace Model {
         this->setName(entity[3]);
         this->setSalary(std::stod(entity[4]));
         this->setIsAdmin(entity[5] == "1");
+        this->setCreationDate(entity[6]);
     }
     double Employee::getSalary() const {
         return Employee::salary;
@@ -36,6 +37,7 @@ namespace Model {
         data.push_back(this->getName());
         data.push_back(std::to_string(this->getSalary()));
         data.push_back(std::to_string(this->isAdmin()));
+        data.push_back(this->getCreationDate());
         return Helper::makeEntity(data, ',');
     }
 }// namespace Model

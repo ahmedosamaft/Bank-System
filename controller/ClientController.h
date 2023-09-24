@@ -38,7 +38,7 @@ namespace Controller {
         static void transferTo();
         static void makeTransaction(const shared_ptr<Model::Client>& sender, const shared_ptr<Model::Client>& receiver, const string& transactionType, double amount);
         static void saveTransaction(shared_ptr<Model::Transaction>& transaction);
-        static void showTransaction(shared_ptr<Model::Transaction> transaction);
+        static void showTransaction(const shared_ptr<Model::Transaction>& transaction);
         static long long generateIdClient();
         static long long generateIdTransaction();
         static void reloadData();

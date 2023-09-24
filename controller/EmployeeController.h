@@ -42,12 +42,12 @@ namespace Controller {
         static void reloadData();
         static void reloadEmployees();
         static void accountInformation(const shared_ptr<Model::Employee>& employee);
-        static void makeClient(string &name, string &userName, string &password);
+        static void makeClient(string &name, string &userName, string &password, double &balance);
+        static void makeEmployee(string &name, string &userName, string &password, double &salary);
         static void notAuthorized();
-        static void makeEmployee(string &name, string &userName, string &password);
         static long long int generateId();
         static void makeUser();
-        static bool checkAuth(string &userName);
+        static bool checkAuthorization(string &userName);
         static void showAllTransactions();
     };
 }// namespace Controller

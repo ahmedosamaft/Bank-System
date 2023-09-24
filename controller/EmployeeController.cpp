@@ -53,12 +53,12 @@ namespace Controller {
 
     void EmployeeController::takeControl(string &userName) {
         currentEmployee = getEmployee(userName);
-        std::cout << "\nWelcome Mr. " << currentEmployee->getName() << "\n\n";
+        std::cout << "\n  Welcome Mr " << currentEmployee->getName() << "\n\n";
         std::vector<std::string> menu = {"Account Information", "Show User Information", "Create User", "Delete User"};
         if (currentEmployee->isAdmin())
             menu.emplace_back("Show System Transaction");
-        menu.emplace_back("Exit");
-        while (true){
+        menu.emplace_back("Logout");
+        while (true) {
             int choice = Helper::runMenu(menu);
             if (choice == 1) {
                 accountInformation();
@@ -76,40 +76,40 @@ namespace Controller {
     }
 
     void EmployeeController::accountInformation() {
-        std::cout << "Name: " << currentEmployee->getName() << " - Username: " << currentEmployee->getUserName();
-        std::cout << "Authority: " << (currentEmployee->isAdmin() ? "Admin" : "Employee");
-        std::cout << "\nAccount Salary: $" << currentEmployee->getSalary() << '\n';
+        std::cout << "Name: " << currentEmployee->getName() << "\n username: " << currentEmployee->getUserName();
+        std::cout << "\n Authority: " << (currentEmployee->isAdmin() ? "Admin" : "Employee");
+        std::cout << "\n Account Salary: $" << currentEmployee->getSalary() << "\n\n";
     }
 
     void EmployeeController::accountInformation(const shared_ptr<Model::Employee> &employee) {
-        std::cout << "Name: " << employee->getName() << " - Username: " << employee->getUserName() << std::endl;
-        std::cout << "Authority: " << (employee->isAdmin() ? "Admin" : "Employee");
-        std::cout << "\nAccount Salary: $" << employee->getSalary() << '\n';
+        std::cout << "Name: " << employee->getName() << "\n Username: " << employee->getUserName();
+        std::cout << "\n Authority: " << (employee->isAdmin() ? "Admin" : "Employee");
+        std::cout << "\n Account Salary: $" << employee->getSalary() << "\n\n";
     }
 
-    bool EmployeeController::checkAuth(string& userName) {
+    bool EmployeeController::checkAuthorization(string &userName) {
         return (!ClientController::allClientsUserName.count(userName) &&
                 (EmployeeController::allEmployeesUserName.count(userName) && !currentEmployee->isAdmin()));
     }
 
     void EmployeeController::notAuthorized() {
         std::cout << "You are currently 3bd! so You do not have the authority to make this action.\n";
-        std::cout << "Try another User ID.\n";
+        std::cout << "Try another User username.\n";
     }
 
     void EmployeeController::controlUser() {
         string userName;
+        std::cout << "Enter Username: ";
         while (true) {
-            std::cout << "Enter Username: ";
             std::cin >> userName;
-            if (checkAuth(userName)) {
+            if (checkAuthorization(userName)) {
                 notAuthorized();
                 continue;
             }
             if (!ClientController::allClientsUserName.count(userName) &&
                 !EmployeeController::allEmployeesUserName.count(userName)) {
-                std::cout << "Invalid username.\n";
-                std::cout << "Try another username.\n";
+                std::cout << "Invalid username!\n";
+                std::cout << "Try another username: \n";
                 continue;
             }
             break;
@@ -160,47 +160,66 @@ namespace Controller {
             menu.emplace_back("Employee");
         menu.emplace_back("Exit");
         int choice = Helper::runMenu(menu);
-        if(choice == menu.size()) return ;
+        if (choice == menu.size()) return;
         string userName, password, name;
         cout << "Enter name: ";
         cin.ignore();
         getline(cin, name);
+        cout << "Enter username: ";
         while (true) {
-            cout << "Enter username: ";
             cin >> userName;
             if (ClientController::allClientsUserName.count(userName) || EmployeeController::allEmployeesUserName.count(userName)) {
-                cout << userName << " is not available. Try Another Username\n";
+                cout << userName << " is not available. Try Another username: \n";
                 continue;
             }
             break;
         }
         cout << "Enter password: ";
         cin >> password;
+
+        double money;
+        if (choice == 1) cout << "Enter Balance: ";
+        else
+            cout << "Enter Salary: ";
+
+        while (true) {
+            cin >> money;
+            if (cin.fail()) {
+                cout << "input a valid amount of money: ";
+                cin.clear();
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                continue;
+            }
+            break;
+        }
+
         if (choice == 1)
-            makeClient(name, userName, password);
+            makeClient(name, userName, password, money);
         else if (choice == 2 && currentEmployee->isAdmin())
-            makeEmployee(name, userName, password);
+            makeEmployee(name, userName, password, money);
         else
             notAuthorized();
     }
 
-    void EmployeeController::makeClient(string &name, string &userName, string &password) {
+    void EmployeeController::makeClient(string &name, string &userName, string &password, double &balance) {
         long long id = ClientController::generateIdClient();
-        shared_ptr<Model::Client> client{new Model::Client(id, name, userName, password)};
+        shared_ptr<Model::Client> client{new Model::Client(id, name, userName, password, Helper::currentTimeToString())};
+        client->setBalance(balance);
         ClientController::idClient[id] = client;
         ClientController::allClientsUserName[userName] = client;
         ClientController::allClients.push_back(client);
-        cout << "Client Created Successfully.\n";
+        cout << "Client Created Successfully!\n";
         ClientController::reloadData();
     }
 
-    void EmployeeController::makeEmployee(string &name, string &userName, string &password) {
+    void EmployeeController::makeEmployee(string &name, string &userName, string &password, double &salary) {
         long long id = EmployeeController::generateId();
-        shared_ptr<Model::Employee> employee{new Model::Employee(id, name, userName, password)};
+        shared_ptr<Model::Employee> employee{new Model::Employee(id, name, userName, password, Helper::currentTimeToString())};
+        employee->setSalary(salary);
         EmployeeController::idEmployee[id] = employee;
         EmployeeController::allEmployeesUserName[userName] = employee;
         EmployeeController::allEmployees.push_back(employee);
-        cout << "Employee Created Successfully.\n";
+        cout << "Employee Created Successfully!\n";
         EmployeeController::reloadData();
     }
 
@@ -211,24 +230,24 @@ namespace Controller {
         menu.emplace_back("Exit");
         string userName;
         int choice = Helper::runMenu(menu);
-        if(choice == menu.size()) return ;
+        if (choice == menu.size()) return;
+        std::cout << "Enter username: ";
         while (true) {
-            std::cout << "Enter username: ";
             std::cin >> userName;
-            if(allEmployeesUserName.count(userName) && !currentEmployee->isAdmin()) {
+            if (allEmployeesUserName.count(userName) && !currentEmployee->isAdmin()) {
                 notAuthorized();
                 continue;
             }
             if (!ClientController::allClientsUserName.count(userName) && !allEmployeesUserName.count(userName)) {
-                std::cout << "Invalid username.\n";
-                std::cout << "Try another username.\n";
+                std::cout << "Invalid username!\n";
+                std::cout << "Try another username: \n";
                 continue;
             }
             break;
         }
-        if(choice == 1)
+        if (choice == 1)
             deleteClient(userName);
-        else if(choice==2 && currentEmployee->isAdmin())
+        else if (choice == 2 && currentEmployee->isAdmin())
             deleteEmployee(userName);
     }
 
@@ -240,18 +259,18 @@ namespace Controller {
         ClientController::reloadData();
         ClientController::readClients();
         ClientController::readTransactions();
-        std::cout << "Client Deleted Successfully.\n";
+        std::cout << "Client Deleted Successfully!\n";
     }
 
     void EmployeeController::deleteEmployee(string &userName) {
         EmployeeController::allEmployeesUserName[userName] = nullptr;
         EmployeeController::reloadData();
         EmployeeController::readEmployees();
-        std::cout << "Employee Deleted Successfully.\n";
+        std::cout << "Employee Deleted Successfully!\n";
     }
 
-    void  EmployeeController::showAllTransactions(){
-        for (const auto &[id,transaction]: ClientController::idTransaction)
+    void EmployeeController::showAllTransactions() {
+        for (const auto &[id, transaction]: ClientController::idTransaction)
             ClientController::showTransaction(transaction);
     }
 

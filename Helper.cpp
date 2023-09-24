@@ -21,21 +21,29 @@ std::vector<std::string> Helper::parseLine(std::string entity, char delimiter) {
     return entity_vec;
 }
 
+bool Helper::isInteger(const std::string &s) {
+    std::istringstream iss(s);
+    int value;
+    iss >> value;
+    return !iss.fail() && iss.eof();
+}
+
 int Helper::runMenu(std::vector<std::string> &menu) {
     std::cout << "Please make a choice:\n";
     for (int i = 0; i < menu.size(); ++i) {
         std::cout << i + 1 << " - " << menu[i] << std::endl;
     }
     std::cout << "Choice: ";
-    int choice;
+    std::string choice;
     while (true) {
         std::cin >> choice;
-        if (std::cin.fail() || choice > menu.size() || choice < 0) {
+        if (std::cin.fail() || !isInteger(choice) || std::stoi(choice) > menu.size() || std::stoi(choice) < 0) {
             std::cout << "ERROR please input a number in range 1 to " << menu.size() << ": ";
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         } else
             break;
     }
-    return choice;
+    return std::stoi(choice);
 }
 std::string Helper::makeEntity(std::vector<std::string> &data, char delimiter) {
     std::string ret;
@@ -83,7 +91,7 @@ template<class T>
 void Helper::eraseEntity(std::vector<std::shared_ptr<T>> &entities, std::shared_ptr<T> &entityToDelete) {
     std::vector<T> ret;
     for (const auto &entity: entities) {
-        if(entity != entityToDelete)
+        if (entity != entityToDelete)
             ret.push_back(entity);
     }
     entities = ret;

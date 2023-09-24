@@ -15,12 +15,11 @@ namespace Model {
         std::string name;
         std::string userName;
         std::string password;
-        std::string createdAt;
-
+        std::string creationDate;
 
     public:
         Person();
-        Person(long long int id, const std::string &name, const std::string &userName, const std::string &password);
+        Person(long long int id, const std::string &name, const std::string &userName, const std::string &password, const std::string &creationDate);
         virtual const std::string toString();
         bool operator==(const Person &rhs) const;
         bool operator==(const long long &id) const;
@@ -36,6 +35,8 @@ namespace Model {
         void setUserName(const std::string &userName);
         const std::string &getPassword() const;
         void setPassword(const std::string &password);
+        const std::string &getCreationDate() const;
+        void setCreationDate(const std::string &creationDate);
     };
 
 }// namespace Model
