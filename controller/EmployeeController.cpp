@@ -333,9 +333,9 @@ namespace Controller {
 
     void EmployeeController::showTransaction(shared_ptr<Model::Transaction> &transaction) {
         cout << "> " << transaction->getSender()->getUserName();
-        if (transaction->getTransactionType() == "1") cout << " Withdraw $";
+        if (transaction->getTransactionType() == "1") cout << " Withdrew $";
         else if (transaction->getTransactionType() == "2")
-            cout << " Deposit $";
+            cout << " Deposited $";
         else if (transaction->getTransactionType() == "3") {
             cout << " Sent $";
         }
