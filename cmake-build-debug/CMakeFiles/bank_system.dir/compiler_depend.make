@@ -373,7 +373,8 @@ CMakeFiles/bank_system.dir/controller/AdminController.cpp.obj: D:/Projects/bank_
   C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/vector \
   C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_vector.h \
   C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_bvector.h \
-  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/vector.tcc
+  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/vector.tcc \
+  D:/Projects/bank_system/model/Transaction.h
 
 CMakeFiles/bank_system.dir/controller/ClientController.cpp.obj: D:/Projects/bank_system/controller/ClientController.cpp \
   D:/Projects/bank_system/controller/ClientController.h \
@@ -1355,7 +1356,8 @@ CMakeFiles/bank_system.dir/model/Employee.cpp.obj: D:/Projects/bank_system/model
   C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/vector \
   C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_vector.h \
   C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_bvector.h \
-  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/vector.tcc
+  C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/vector.tcc \
+  D:/Projects/bank_system/model/Transaction.h
 
 CMakeFiles/bank_system.dir/model/Person.cpp.obj: D:/Projects/bank_system/model/Person.cpp \
   D:/Projects/bank_system/model/Person.h \
@@ -2340,9 +2342,9 @@ D:/Projects/bank_system/model/Employee.h:
 
 D:/Projects/bank_system/model/Person.h:
 
-D:/Projects/bank_system/controller/ClientController.h:
-
 D:/Projects/bank_system/model/Transaction.h:
+
+D:/Projects/bank_system/controller/ClientController.h:
 
 C:/Program\ Files/JetBrains/CLion\ 2023.1.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/basic_file.h:
 

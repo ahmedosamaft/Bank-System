@@ -84,8 +84,8 @@ namespace Model {
         data.push_back(std::to_string(receiver->getId()));
         data.push_back(transactionType);
         data.push_back(std::to_string(amount));
-        data.push_back(std::to_string(sender->getBalance()));
-        data.push_back(std::to_string(receiver->getBalance()));
+        data.push_back(std::to_string(senderPreviousBalance));
+        data.push_back(std::to_string(receiverPreviousBalance));
         data.push_back(currentTime);
         return  Helper::makeEntity(data, ',');
     }

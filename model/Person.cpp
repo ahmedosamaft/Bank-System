@@ -46,13 +46,14 @@ namespace Model {
         Person::name = name;
     }
 
-    Person::Person(long long int id, const std::string &name, const std::string &userName, const std::string &password, const std::string &creationDate) : id(id), name(name), userName(userName), password(password), creationDate(creationDate) {}
+    Person::Person(long long int id, const std::string &name, const std::string &userName, const std::string &password, const std::string &creationDate) : id(id), name(name), userName(userName), password(password), creationTime(creationDate) {}
 
-    const std::string &Person::getCreationDate() const {
-        return creationDate;
+    const std::string &Person::getCreationTime() const {
+        return creationTime;
     }
-    void Person::setCreationDate(const std::string &creationDate) {
-        Person::creationDate = creationDate;
+    void Person::setCreationTime(const std::string &creationDate) {
+        Person::creationTime = creationDate;
     }
+
 
 }// namespace Model

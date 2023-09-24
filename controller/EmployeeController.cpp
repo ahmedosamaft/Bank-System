@@ -56,7 +56,7 @@ namespace Controller {
         std::cout << "\n  Welcome Mr " << currentEmployee->getName() << "\n\n";
         std::vector<std::string> menu = {"Account Information", "Show User Information", "Create User", "Delete User"};
         if (currentEmployee->isAdmin())
-            menu.emplace_back("Show System Transaction");
+            menu.insert(menu.begin() + 2, "Edit Employee"), menu.emplace_back("Show System Transactions");
         menu.emplace_back("Logout");
         while (true) {
             int choice = Helper::runMenu(menu);
@@ -64,26 +64,36 @@ namespace Controller {
                 accountInformation();
             } else if (choice == 2) {
                 controlUser();
-            } else if (choice == 3) {
+            } else if (choice == 3 && currentEmployee->isAdmin()) {
+                editUser();
+            } else if (choice == 3 || (choice == 4 && currentEmployee->isAdmin())) {
                 makeUser();
-            } else if (choice == 4) {
+            } else if (choice == 4 || (choice == 5 && currentEmployee->isAdmin())) {
                 deleteUser();
-            } else if (choice == 5 && currentEmployee->isAdmin()) {
+            } else if (choice == 6 && currentEmployee->isAdmin())
                 showAllTransactions();
-            } else
+            else
                 return;
         }
     }
 
     void EmployeeController::accountInformation() {
         std::cout << "Name: " << currentEmployee->getName() << "\n username: " << currentEmployee->getUserName();
-        std::cout << "\n Authority: " << (currentEmployee->isAdmin() ? "Admin" : "Employee");
+        std::cout << "\n Authority: ";
+        if (currentEmployee->isAdmin())
+            std::cout << "Admin\n Became Admin at " << Helper::TimeStingToFormattedString(currentEmployee->getCreationTime());
+        else
+            std::cout << "Employee\n Account Created at " << Helper::TimeStingToFormattedString(currentEmployee->getCreationTime());
         std::cout << "\n Account Salary: $" << currentEmployee->getSalary() << "\n\n";
     }
 
     void EmployeeController::accountInformation(const shared_ptr<Model::Employee> &employee) {
         std::cout << "Name: " << employee->getName() << "\n Username: " << employee->getUserName();
-        std::cout << "\n Authority: " << (employee->isAdmin() ? "Admin" : "Employee");
+        std::cout << "\n Authority: ";
+        if (employee->isAdmin())
+            std::cout << "Admin\n Became Admin at " << Helper::TimeStingToFormattedString(employee->getCreationTime());
+        else
+            std::cout << "Employee\n Account Created at " << Helper::TimeStingToFormattedString(employee->getCreationTime());
         std::cout << "\n Account Salary: $" << employee->getSalary() << "\n\n";
     }
 
@@ -94,7 +104,7 @@ namespace Controller {
 
     void EmployeeController::notAuthorized() {
         std::cout << "You are currently 3bd! so You do not have the authority to make this action.\n";
-        std::cout << "Try another User username.\n";
+        std::cout << "Try another User username: \n";
     }
 
     void EmployeeController::controlUser() {
@@ -223,6 +233,51 @@ namespace Controller {
         EmployeeController::reloadData();
     }
 
+    void EmployeeController::editUser() {
+        string userName;
+        std::cout << "Enter username: ";
+        while (true) {
+            std::cin >> userName;
+            if (!allEmployeesUserName.count(userName)) {
+                std::cout << "Invalid username!\n";
+                std::cout << "Try another username: \n";
+                continue;
+            } else if (allEmployeesUserName[userName]->isAdmin()) {
+                notAuthorized();
+                continue;
+            }
+            break;
+        }
+        editEmployee(userName);
+    }
+
+    void EmployeeController::editEmployee(string &userName) {
+        vector<string> menu = {"Edit Salary", "Make Admin", "Exit"};
+        int choice = Helper::runMenu(menu);
+        if (choice == 1) {
+            cout << "Enter the new salary: ";
+            double salary;
+            while (true) {
+                cin >> salary;
+                if (cin.fail()) {
+                    cout << "Enter a valid amount of money: ";
+                    cin.clear();
+                    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    continue;
+                }
+                break;
+            }
+            allEmployeesUserName[userName]->setSalary(salary);
+            EmployeeController::reloadData();
+            cout << "Salary Changed Successfully!\n";
+        } else if (choice == 2) {
+            allEmployeesUserName[userName]->setIsAdmin(true);
+            EmployeeController::reloadData();
+            cout << userName << " Became Admin Successfully!\n";
+        } else
+            return;
+    }
+
     void EmployeeController::deleteUser() {
         std::vector<std::string> menu = {"Client"};
         if (currentEmployee->isAdmin())
@@ -270,12 +325,39 @@ namespace Controller {
     }
 
     void EmployeeController::showAllTransactions() {
+        cout << endl;
         for (const auto &[id, transaction]: ClientController::idTransaction)
-            ClientController::showTransaction(transaction);
+            showTransaction(const_cast<shared_ptr<Model::Transaction> &>(transaction));
+        cout << endl;
+    }
+
+    void EmployeeController::showTransaction(shared_ptr<Model::Transaction> &transaction) {
+        cout << "> " << transaction->getSender()->getUserName();
+        if (transaction->getTransactionType() == "1") cout << " Withdraw $";
+        else if (transaction->getTransactionType() == "2")
+            cout << " Deposit $";
+        else if (transaction->getTransactionType() == "3") {
+            cout << " Sent $";
+        }
+        cout << transaction->getAmount();
+
+        if (transaction->getTransactionType() == "1")
+            cout << " (Balance Changed from $" << transaction->getSenderPreviousBalance()
+                 << " to $" << transaction->getSenderPreviousBalance() - transaction->getAmount();
+        else if (transaction->getTransactionType() == "2")
+            cout << " (Balance Changed from $" << transaction->getSenderPreviousBalance()
+                 << " to $" << transaction->getSenderPreviousBalance() + transaction->getAmount();
+        else if (transaction->getTransactionType() == "3") {
+            cout << " to " << transaction->getReceiver()->getUserName()
+                 << " (Sender Balance Changed from $" << transaction->getSenderPreviousBalance()
+                 << " to $" << transaction->getSenderPreviousBalance() - transaction->getAmount()
+                 << " | Receiver Balance Changed from $" << transaction->getReceiverPreviousBalance()
+                 << " to $" << transaction->getReceiverPreviousBalance() + transaction->getAmount();
+        }
+        cout << ")  on " << Helper::TimeStingToFormattedString(transaction->getDate()) << '\n';
     }
 
     long long int EmployeeController::generateId() {
         return ++lastId;
     }
-
 }// namespace Controller

@@ -12,7 +12,7 @@
 namespace Model {
     class Client : public Person {
     private:
-        double balance{};
+        double balance;
         std::vector<std::shared_ptr<Model::Transaction>> transactionHistory;
 
     public:

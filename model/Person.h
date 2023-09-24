@@ -15,7 +15,7 @@ namespace Model {
         std::string name;
         std::string userName;
         std::string password;
-        std::string creationDate;
+        std::string creationTime;
 
     public:
         Person();
@@ -35,8 +35,8 @@ namespace Model {
         void setUserName(const std::string &userName);
         const std::string &getPassword() const;
         void setPassword(const std::string &password);
-        const std::string &getCreationDate() const;
-        void setCreationDate(const std::string &creationDate);
+        const std::string &getCreationTime() const;
+        void setCreationTime(const std::string &creationDate);
     };
 
 }// namespace Model

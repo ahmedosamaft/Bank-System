@@ -12,7 +12,7 @@ namespace Model {
         this->setPassword(entity[2]);
         this->setName(entity[3]);
         this->setBalance(std::stod(entity[4]));
-        this->setCreationDate(entity[5]);
+        this->setCreationTime(entity[5]);
     }
 
     double Client::getBalance() const {
@@ -36,7 +36,7 @@ namespace Model {
         data.push_back(this->getPassword());
         data.push_back(this->getName());
         data.push_back(std::to_string(this->getBalance()));
-        data.push_back(this->getCreationDate());
+        data.push_back(this->getCreationTime());
         return Helper::makeEntity(data, ',');
     }
 

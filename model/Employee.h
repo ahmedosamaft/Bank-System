@@ -8,6 +8,7 @@
 #define INC_51CBF8FBE6C74E8E99E29EF03138241F
 
 #include "Person.h"
+#include "Transaction.h"
 
 namespace Model {
     class Employee : public Person {

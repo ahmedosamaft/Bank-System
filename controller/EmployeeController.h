@@ -29,26 +29,36 @@ namespace Controller {
 
     public:
         static void readEmployees();
+        static void reloadData();
+        static void reloadEmployees();
         static bool isValid(string &userName, string &password);
         static shared_ptr<Model::Employee> getEmployee(string &userName);
         static void takeControl(string &userName);
+
         static void accountInformation();
+        static void accountInformation(const shared_ptr<Model::Employee>& employee);
+
         static void controlUser();
         static void controlClient(string &userName);
         static void controlEmployee(string &userName);
+
+        static void makeUser();
+        static void makeClient(string &name, string &userName, string &password, double &balance);
+        static void makeEmployee(string &name, string &userName, string &password, double &salary);
+
+        static void editUser();
+        static void editEmployee(string&userName);
+
         static void deleteUser();
         static void deleteClient(string &userName);
         static void deleteEmployee(string &userName);
-        static void reloadData();
-        static void reloadEmployees();
-        static void accountInformation(const shared_ptr<Model::Employee>& employee);
-        static void makeClient(string &name, string &userName, string &password, double &balance);
-        static void makeEmployee(string &name, string &userName, string &password, double &salary);
+
         static void notAuthorized();
-        static long long int generateId();
-        static void makeUser();
         static bool checkAuthorization(string &userName);
+
         static void showAllTransactions();
+        static void showTransaction(shared_ptr<Model::Transaction> &transaction);
+        static long long int generateId();
     };
 }// namespace Controller
 

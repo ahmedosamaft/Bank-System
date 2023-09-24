@@ -60,9 +60,9 @@ namespace Controller {
     }
 
     void ClientController::reloadClients() {
-        fstream sout(clientsDirectory,ios::out);
-        for (auto &[id, client] : allClientsUserName) {
-            if(client != nullptr)
+        fstream sout(clientsDirectory, ios::out);
+        for (auto &[id, client]: allClientsUserName) {
+            if (client != nullptr)
                 sout << client->toString() << '\n';
         }
         sout.close();
@@ -70,8 +70,8 @@ namespace Controller {
 
     void ClientController::reloadTransactions() {
         fstream sout(transactionHistoryDirectory, ios::out);
-        for (auto &[id, transaction] : idTransaction) {
-            if(transaction != nullptr)
+        for (auto &[id, transaction]: idTransaction) {
+            if (transaction != nullptr)
                 sout << transaction->toString() << '\n';
         }
         sout.close();
@@ -81,7 +81,7 @@ namespace Controller {
         currentClient = getClient(userName);
         std::cout << "  Welcome " << currentClient->getName() << "\n";
         std::vector<std::string> menu = {"Account Information", "Withdraw", "Deposit", "Transfer Money To", "Transaction History", "Logout"};
-        while (true){
+        while (true) {
             int choice = Helper::runMenu(menu);
             if (choice == 1) {
                 accountInformation();
@@ -100,7 +100,7 @@ namespace Controller {
 
     void ClientController::accountInformation() {
         std::cout << "Name: " << currentClient->getName() << "\n username: " << currentClient->getUserName();
-        std::cout << "\n Account Created at " << Helper::TimeStingToFormattedString(currentClient->getCreationDate());
+        std::cout << "\n Account Created at " << Helper::TimeStingToFormattedString(currentClient->getCreationTime());
         std::cout << "\n Account Balance: $" << currentClient->getBalance() << "\n\n";
     }
 
@@ -188,13 +188,15 @@ namespace Controller {
     }
 
     void ClientController::showTransactionHistory() {
+        cout << endl;
         std::vector<std::shared_ptr<Model::Transaction>> transactions = currentClient->getTransactionHistory();
         for (const auto &trans: transactions) {
             showTransaction(trans);
         }
     }
 
-    void ClientController::showTransaction(const std::shared_ptr<Model::Transaction>& transaction) {
+    void ClientController::showTransaction(const std::shared_ptr<Model::Transaction> &transaction) {
+        cout << "> ";
         if (transaction->getTransactionType() == "1") cout << "Withdrawing $";
         else if (transaction->getTransactionType() == "2")
             cout << "Depositing $";
@@ -207,7 +209,13 @@ namespace Controller {
         cout << transaction->getAmount();
 
 
-        if (transaction->getTransactionType() == "3") {
+        if (transaction->getTransactionType() == "1")
+            cout << " (Balance Changed from $" << transaction->getSenderPreviousBalance()
+                 << " to $" << transaction->getSenderPreviousBalance() - transaction->getAmount();
+        else if (transaction->getTransactionType() == "2")
+            cout << " (Balance Changed from $" << transaction->getSenderPreviousBalance()
+                 << " to $" << transaction->getSenderPreviousBalance() + transaction->getAmount();
+        else if (transaction->getTransactionType() == "3") {
             if (transaction->getSender()->getId() == currentClient->getId())
                 cout << " to " << transaction->getReceiver()->getUserName()
                      << " (Account Balance Changed from $" << transaction->getSenderPreviousBalance()
@@ -216,10 +224,7 @@ namespace Controller {
                 cout << " from " << transaction->getSender()->getUserName()
                      << " (Account Balance Changed from $" << transaction->getReceiverPreviousBalance()
                      << " to $" << transaction->getReceiverPreviousBalance() + transaction->getAmount();
-        } else
-            cout << " (Account Balance Changed from $"
-                 << transaction->getSenderPreviousBalance() << " to $"
-                 << transaction->getSenderPreviousBalance() - transaction->getAmount();
+        }
 
         cout << ") on " << Helper::TimeStingToFormattedString(transaction->getDate()) << '\n';
     }
@@ -240,7 +245,7 @@ namespace Controller {
         saveTransaction(transaction);
     }
 
-    void ClientController::saveTransaction(std::shared_ptr<Model::Transaction>& transaction) {
+    void ClientController::saveTransaction(std::shared_ptr<Model::Transaction> &transaction) {
         std::fstream sout(Controller::ClientController::transactionHistoryDirectory, std::ios::app);
         idTransaction[transaction->getId()] = transaction;
         sout << transaction->toString() << '\n';
